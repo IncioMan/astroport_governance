@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #000e37;
 }
 
 .App-logo {
@@ -7,17 +8,23 @@
   pointer-events: none;
 }
 
-.container{
-  background-color: #000e37;
-}
 
 .charts-container{
   width: 100%;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 .chart-container{
-  width: 45%;
+  width: 46%;
+  padding: 2%;
+}
+
+@media(max-width:760px){
+  .chart-container{
+    width: 100%;
+    padding: 0%;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -27,12 +34,11 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #000d37;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }

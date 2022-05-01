@@ -23,11 +23,15 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+ChartJS.defaults.color = "#fff";
+ChartJS.defaults.backgroundColor = "#fff";
+ChartJS.defaults.borderColor = "#fff";
+
 
 export const options = {
   plugins: {
     title: {
-      display: true,
+      display: false,
       text: 'Chart.js Bar Chart - Stacked',
     },
   },
@@ -48,14 +52,14 @@ export const data = {
   labels,
   datasets: [
     {
-      label: 'For',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgb(75, 192, 192)',
-    },
-    {
       label: 'Against',
       data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
       backgroundColor: 'rgb(255, 99, 132)',
+    },
+    {
+      label: 'For',
+      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+      backgroundColor: 'rgb(75, 192, 192)',
     },
     {
       label: 'Abstain',
@@ -67,13 +71,17 @@ export const data = {
 
 export default function App() {
   return (
-    <div className='charts-container'>
-      <div className='chart-container'>
-        <Bar options={options} data={data} />
+    <div className='App'>
+        <div className='App-header'>
+          <div className='charts-container'>
+            <div className='chart-container'>
+              <Bar options={options} data={data} />
+            </div>
+            <div className='chart-container'>
+              <Bar options={options} data={data} />
+            </div>
+        </div>
       </div>
-      <div className='chart-container'>
-        <Bar options={options} data={data} />
-      </div>
-  </div>
+        </div>
   );
 }
