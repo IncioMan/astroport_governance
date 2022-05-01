@@ -54,7 +54,7 @@ export default function TopVotersPerProposal() {
           {
             let datapoint = {}
             datapoint.x = d.proposal_id
-            datapoint.y = d.voting_power
+            datapoint.y = Math.round(d.voting_power/100000000/100)*100
             return datapoint
           }),
           backgroundColor: '#7fe6a2'
@@ -66,7 +66,7 @@ export default function TopVotersPerProposal() {
           {
             let datapoint = {}
             datapoint.x = d.proposal_id
-            datapoint.y = d.voting_power
+            datapoint.y = Math.round(d.voting_power/100000000/100)*100
             return datapoint
           }),
           backgroundColor: '#ef5176'
@@ -78,6 +78,12 @@ export default function TopVotersPerProposal() {
 
     const labels = [...new Set(rawData.map((p)=>p.proposal_id))];
     const options = {
+      elements: {
+        point:{
+          borderWidth: 0,
+          radius: 5
+        }
+      },
       scales: {
         x: {
           type: 'linear',

@@ -71,12 +71,12 @@ export default function ProposalRecap() {
       datasets: [
         {
           label: 'Against',
-          data: labels.map((i) => proposalData.filter((p)=>parseInt(p.proposal_id)==i).map((p)=>p.voting_power_against)),
+          data: labels.map((i) => proposalData.filter((p)=>parseInt(p.proposal_id)==i).map((p)=>Math.round(p.voting_power_against/100000000/100)*100)),
           backgroundColor: '#ef5176',
         },
         {
           label: 'For',
-          data: labels.map((i) => proposalData.filter((p)=>parseInt(p.proposal_id)==i).map((p)=>p.voting_power_for)),
+          data: labels.map((i) => proposalData.filter((p)=>parseInt(p.proposal_id)==i).map((p)=>p.voting_power_for/100000000/100)*100),
           backgroundColor: '#7fe6a2',
         },
         {

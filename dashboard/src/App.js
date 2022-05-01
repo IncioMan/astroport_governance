@@ -29,6 +29,10 @@ export default function App() {
             <ProposalRecap/>
             <TopVotersPerProposal/>
         </div>
+        <div className='charts-container'>
+            <ProposalRecap/>
+            <TopVotersPerProposal/>
+        </div>
       </div>
     </div>
   );
