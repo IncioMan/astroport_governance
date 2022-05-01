@@ -28,7 +28,7 @@ ChartJS.defaults.color = "#fff";
 ChartJS.defaults.backgroundColor = "#fff";
 ChartJS.defaults.borderColor = "#fff";
 
-axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/proposal_recap.csv")
+axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/proposal_recap.json")
         .then(function (response) {
             console.log(response)
         })
