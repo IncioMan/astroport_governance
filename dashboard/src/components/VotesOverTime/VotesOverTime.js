@@ -9,7 +9,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
 import 'chart.js/auto';
 import { useEffect, useState } from 'react';
 const axios = require('axios').default;
@@ -55,7 +54,7 @@ export default function VotesOverTime() {
       datasets: [{
           label: 'For',
           data:
-          rawData.filter((d)=>d.proposal_id==proposal_id).map((d)=>
+          rawData.filter((d)=>d.proposal_id==proposal_id).sort((a, b) => a.hr.localeCompare(b.hr)).map((d)=>
           {
             let datapoint = {}
             datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
@@ -71,7 +70,9 @@ export default function VotesOverTime() {
         {
           label: 'Against',
           data:
-          rawData.filter((d)=>d.proposal_id==proposal_id).map((d)=>
+          rawData.filter((d)=>d.proposal_id==proposal_id)
+                 .sort((a, b) => a.hr.localeCompare(b.hr))
+                 .map((d)=>
           {
             let datapoint = {}
             datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
