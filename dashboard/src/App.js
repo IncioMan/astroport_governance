@@ -1,19 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Bar, Doughnut } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
-import { ArcElement } from "chart.js";
 import 'chart.js/auto';
-import { useEffect, useState } from 'react';
+import VotesOverTime from './components/VotesOverTime/VotesOverTime.js'
 import ProposalRecap from './components/ProposalRecap/ProposalRecap.js'
 import TopVotersPerProposal from './components/TopVotersPerProposal/TopVotersPerProposal';
 const axios = require('axios').default;
@@ -30,6 +17,10 @@ export default function App() {
           </a>
           <div className='charts-container'>
             <ProposalRecap/>
+            <TopVotersPerProposal/>
+        </div>
+        <div className='charts-container'>
+            <VotesOverTime/>
             <TopVotersPerProposal/>
         </div>
       </div>

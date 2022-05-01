@@ -24,7 +24,6 @@ ChartJS.register(
 );
 ChartJS.defaults.color = "#fff";
 ChartJS.defaults.backgroundColor = "#fff";
-ChartJS.defaults.borderColor = "#fff";
 
 export default function ProposalRecap() {
   const [proposalData, setProposalData] = useState([])
