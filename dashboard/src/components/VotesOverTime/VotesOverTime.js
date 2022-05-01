@@ -86,20 +86,15 @@ export default function VotesOverTime() {
     console.log('ciao',[...new Set(rawData.map((i, p)=> p))])
     const options = {
       responsive: true,
-      scales: {
-        x: {
-          type: 'linear',
-          position: 'bottom',
-          grid:{
-            display: false
-          }
+      plugins: {
+        legend: {
+          position: 'top',
         },
-        y: {
-          grid:{
-            display: false
-          }
-        }
-      }
+        title: {
+          display: true,
+          text: 'Chart.js Line Chart',
+        },
+      },
     };
     
     const cd = {
@@ -143,5 +138,11 @@ export default function VotesOverTime() {
   };
     console.log(chartData.options, chartData.data)
     console.log(options, data)
-    return <Line options={chartData.options} data={chartData.data} />;
+    return (
+      <div className='chart-container'>
+        { (chartData.data)&&
+          <Line options={chartData.options} data={chartData.data} />
+        }
+      </div>
+    );
 }
