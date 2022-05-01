@@ -53,7 +53,7 @@ export default function TopVotersPerProposal() {
           rawData.filter((d)=>d.vote=='for').map((d)=>
           {
             let datapoint = {}
-            datapoint.x = d.proposal_id
+            datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
             datapoint.y = Math.round(d.voting_power/100000000/100)*100
             return datapoint
           }),
@@ -65,7 +65,7 @@ export default function TopVotersPerProposal() {
           rawData.filter((d)=>d.vote=='against').map((d)=>
           {
             let datapoint = {}
-            datapoint.x = d.proposal_id
+            datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
             datapoint.y = Math.round(d.voting_power/100000000/100)*100
             return datapoint
           }),
@@ -81,7 +81,7 @@ export default function TopVotersPerProposal() {
       elements: {
         point:{
           borderWidth: 0,
-          radius: 5
+          radius: 3
         }
       },
       scales: {
