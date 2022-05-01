@@ -90,7 +90,7 @@ export default function ProposalRecap() {
       options: options,
       data: data
     })
-    console.log(proposalChartData, proposalData)
+    //console.log(proposalChartData, proposalData)
   },[proposalData])
   
 

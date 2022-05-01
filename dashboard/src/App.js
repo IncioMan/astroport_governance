@@ -15,6 +15,7 @@ import { ArcElement } from "chart.js";
 import 'chart.js/auto';
 import { useEffect, useState } from 'react';
 import ProposalRecap from './components/ProposalRecap/ProposalRecap.js'
+import TopVotersPerProposal from './components/TopVotersPerProposal/TopVotersPerProposal';
 const axios = require('axios').default;
 
 
@@ -26,7 +27,7 @@ export default function App() {
         <div className='App-header'>
           <div className='charts-container'>
             <ProposalRecap/>
-            <ProposalRecap/>
+            <TopVotersPerProposal/>
         </div>
       </div>
     </div>
