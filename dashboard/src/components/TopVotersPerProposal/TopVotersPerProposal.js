@@ -54,7 +54,9 @@ export default function TopVotersPerProposal() {
           {
             let datapoint = {}
             datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
-            datapoint.y = (Math.random())*100000 + Math.round(d.voting_power/100000000/100)*100
+            datapoint.y = (Math.random())*1000 + Math.round(d.voting_power/1000000/100)*100
+            datapoint.voter = d.voter
+            datapoint.proposal_id = d.proposal_id
             return datapoint
           }),
           backgroundColor: '#7fe6a2'
@@ -66,7 +68,9 @@ export default function TopVotersPerProposal() {
           {
             let datapoint = {}
             datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
-            datapoint.y = (Math.random())*100000 + Math.round(d.voting_power/100000000/100)*100
+            datapoint.y = (Math.random())*1000 + Math.round(d.voting_power/1000000/100)*100
+            datapoint.voter = d.voter
+            datapoint.proposal_id = d.proposal_id
             return datapoint
           }),
           backgroundColor: '#ef5176'
@@ -78,6 +82,28 @@ export default function TopVotersPerProposal() {
 
     const labels = [...new Set(rawData.map((p)=>p.proposal_id))];
     const options = {
+      plugins: {
+        legend:{
+          display: false
+        },
+        tooltip: {
+          enabled: true,
+          callbacks: {
+            label: function(context) {
+                let label = context.dataset.label || '';
+                let labelVoter = ''
+                let labelVotingPower = ''
+                let labelPorposalId = ''
+                if (context.raw.voter) {
+                    labelVoter += 'Voter: '+context.raw.voter
+                    labelPorposalId += 'Proposal: '+context.raw.proposal_id
+                    labelVotingPower += 'Voting power: ' + Math.round(context.raw.y/1000000*100)/100 + 'M'
+                }
+                return [label, labelPorposalId, labelVoter, labelVotingPower];
+            }
+        }
+        }
+      },
       elements: {
         point:{
           borderWidth: 0,

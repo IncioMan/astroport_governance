@@ -20,12 +20,7 @@
   padding: 2%;
 }
 
-@media(max-width:760px){
-  .chart-container{
-    width: 100%;
-    padding: 0%;
-  }
-}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -41,6 +36,7 @@
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  padding: 100px;
 }
 
 .App-link {
@@ -53,5 +49,18 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media(max-width:760px){
+  .chart-container{
+    width: 100%;
+    padding: 0%;
+  }
+}
+
+@media(max-width:1200px){
+  .App-header {
+    padding: 10px;
   }
 }
