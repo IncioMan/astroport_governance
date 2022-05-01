@@ -54,7 +54,7 @@ export default function TopVotersPerProposal() {
           {
             let datapoint = {}
             datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
-            datapoint.y = Math.round(d.voting_power/100000000/100)*100
+            datapoint.y = (Math.random())*100000 + Math.round(d.voting_power/100000000/100)*100
             return datapoint
           }),
           backgroundColor: '#7fe6a2'
@@ -66,7 +66,7 @@ export default function TopVotersPerProposal() {
           {
             let datapoint = {}
             datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
-            datapoint.y = Math.round(d.voting_power/100000000/100)*100
+            datapoint.y = (Math.random())*100000 + Math.round(d.voting_power/100000000/100)*100
             return datapoint
           }),
           backgroundColor: '#ef5176'
