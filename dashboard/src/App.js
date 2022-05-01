@@ -26,6 +26,7 @@ export default function App() {
         <div className='App-header'>
           <div className='charts-container'>
             <ProposalRecap/>
+            <ProposalRecap/>
         </div>
       </div>
     </div>

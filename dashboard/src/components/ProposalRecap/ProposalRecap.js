@@ -72,12 +72,12 @@ export default function ProposalRecap() {
         {
           label: 'Against',
           data: labels.map((i) => proposalData.filter((p)=>parseInt(p.proposal_id)==i).map((p)=>p.voting_power_against)),
-          backgroundColor: 'rgb(255, 99, 132)',
+          backgroundColor: '#ef5176',
         },
         {
           label: 'For',
           data: labels.map((i) => proposalData.filter((p)=>parseInt(p.proposal_id)==i).map((p)=>p.voting_power_for)),
-          backgroundColor: 'rgb(75, 192, 192)',
+          backgroundColor: '#7fe6a2',
         },
         {
           label: 'Abstain',
