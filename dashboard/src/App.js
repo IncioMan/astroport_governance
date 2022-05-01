@@ -13,6 +13,7 @@ import { Bar, Doughnut } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import { ArcElement } from "chart.js";
 import 'chart.js/auto';
+const axios = require('axios').default;
 
 
 ChartJS.register(
@@ -26,6 +27,14 @@ ChartJS.register(
 ChartJS.defaults.color = "#fff";
 ChartJS.defaults.backgroundColor = "#fff";
 ChartJS.defaults.borderColor = "#fff";
+
+axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/proposal_recap.csv")
+        .then(function (response) {
+            console.log(response)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
 
 
 export const options = {
