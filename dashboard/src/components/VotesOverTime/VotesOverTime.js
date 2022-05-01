@@ -86,15 +86,20 @@ export default function VotesOverTime() {
     console.log('ciao',[...new Set(rawData.map((i, p)=> p))])
     const options = {
       responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
+      scales: {
+        x: {
+          type: 'linear',
+          position: 'bottom',
+          grid:{
+            display: false
+          }
         },
-        title: {
-          display: true,
-          text: 'Chart.js Line Chart',
-        },
-      },
+        y: {
+          grid:{
+            display: false
+          }
+        }
+      }
     };
     
     const cd = {
