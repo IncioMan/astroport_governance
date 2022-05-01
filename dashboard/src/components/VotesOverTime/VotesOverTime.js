@@ -48,10 +48,10 @@ export default function VotesOverTime() {
       return
     }
 
-    const proposal_id = 1
+    const proposal_id = 3
 
     const data = {
-      labels: [...new Set(rawData.map((i, p)=> p))],
+      labels: [...new Set(rawData.filter((d)=>d.proposal_id==proposal_id).map((i, p)=> p))],
       datasets: [{
           label: 'For',
           data:
@@ -64,7 +64,9 @@ export default function VotesOverTime() {
             datapoint.proposal_id = d.proposal_id
             return d.voting_power_for_cumsum
           }),
-          backgroundColor: '#7fe6a2'
+          fill: false,
+          borderColor: '#7fe6a2',
+          tension: 0.1
         },
         {
           label: 'Against',
@@ -78,7 +80,9 @@ export default function VotesOverTime() {
             datapoint.proposal_id = d.proposal_id
             return d.voting_power_against_cumsum
           }),
-          backgroundColor: '#ef5176'
+          fill: false,
+          borderColor: '#ef5176',
+          tension: 0.01
         }
       ],
     }
@@ -95,6 +99,25 @@ export default function VotesOverTime() {
           text: 'Chart.js Line Chart',
         },
       },
+      elements: {
+        point:{
+          borderWidth: 0,
+          radius: 0
+        }
+      },
+      scales: {
+        x: {
+          stacked: true,
+          grid:{
+            display: false
+          }
+        },
+        y: {
+          grid:{
+            display: false
+          }
+        },
+      },
     };
     
     const cd = {
@@ -104,8 +127,6 @@ export default function VotesOverTime() {
     setChartData(cd)
     console.log(chartData, cd)
   },[rawData])
-
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
   const options = {
     responsive: true,
@@ -119,25 +140,7 @@ export default function VotesOverTime() {
       },
     },
   }
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-      {
-        label: 'Dataset 2',
-        data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      },
-    ],
-  };
     console.log(chartData.options, chartData.data)
-    console.log(options, data)
     return (
       <div className='chart-container'>
         { (chartData.data)&&
