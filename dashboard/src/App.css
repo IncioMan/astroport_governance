@@ -36,7 +36,7 @@
   align-items: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding: 100px;
+  padding: 50px 100px;
 }
 
 .App-link {
@@ -48,10 +48,23 @@
   color: white;
   border: none;
   border-bottom: solid;
+  font-size: 20px;
 }
 
 .proposal-selector:focus-visible{
   outline: none;
+}
+
+.title{
+  font-size: 26px;
+  padding-left: 10px;
+}
+
+.title-container{
+  padding: 24px;
+  display: flex;
+  color: white;
+  text-decoration: none;
 }
 
 @keyframes App-logo-spin {

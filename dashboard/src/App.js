@@ -15,8 +15,9 @@ export default function App() {
   return (
     <div className='App'>
         <div className='App-header'>
-          <a href={"https://lbp.neb.money/"}>
+          <a className='title-container' href={"https://lbp.neb.money/"}>
             <img src={"https://raw.githubusercontent.com/IncioMan/astroport_governance/master/images/logo.svg"}/>
+            <div className='title'>Governance Dashboard</div>
           </a>
           <div className='charts-container'>
             <ProposalRecap/>
