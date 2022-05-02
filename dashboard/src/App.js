@@ -3,6 +3,7 @@ import 'chart.js/auto';
 import VotesOverTime from './components/VotesOverTime/VotesOverTime.js'
 import ProposalRecap from './components/ProposalRecap/ProposalRecap.js'
 import TopVotersPerProposal from './components/TopVotersPerProposal/TopVotersPerProposal';
+import VotesAddressDistribution from './components/VotesAddressDistribution/VotesAddressDistribution';
 const axios = require('axios').default;
 
 
@@ -21,7 +22,7 @@ export default function App() {
         </div>
         <div className='charts-container'>
             <VotesOverTime/>
-            <TopVotersPerProposal/>
+            <VotesAddressDistribution/>
         </div>
       </div>
     </div>

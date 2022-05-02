@@ -50,45 +50,20 @@ export default function VotesAddressDistribution() {
     const proposal_id = 3
 
     const data = {
-      labels: [...new Set(rawData.filter((d)=>d.proposal_id==proposal_id).map((i, p)=> p))],
+      labels: [...rawData.filter((d)=>d.proposal_id==proposal_id).map((p)=> p.n_addresses)],
       datasets: [{
-          label: 'For',
+          label: '',
           data:
-          rawData.filter((d)=>d.proposal_id==proposal_id).sort((a, b) => a.hr.localeCompare(b.hr)).map((d)=>
+          rawData.filter((d)=>d.proposal_id==proposal_id).map((d)=>
           {
-            let datapoint = {}
-            datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
-            datapoint.y = (Math.random())*1000 + Math.round(d.voting_power/1000000/100)*100
-            datapoint.voter = d.voter
-            datapoint.proposal_id = d.proposal_id
-            return d.voting_power_for_cumsum
+            return d.voting_power_cumsum
           }),
           fill: false,
           borderColor: '#7fe6a2',
           tension: 0.1
-        },
-        {
-          label: 'Against',
-          data:
-          rawData.filter((d)=>d.proposal_id==proposal_id)
-                 .sort((a, b) => a.hr.localeCompare(b.hr))
-                 .map((d)=>
-          {
-            let datapoint = {}
-            datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
-            datapoint.y = (Math.random())*1000 + Math.round(d.voting_power/1000000/100)*100
-            datapoint.voter = d.voter
-            datapoint.proposal_id = d.proposal_id
-            return d.voting_power_against_cumsum
-          }),
-          fill: false,
-          borderColor: '#ef5176',
-          tension: 0.01
         }
       ],
     }
-
-    console.log('ciao',[...new Set(rawData.map((i, p)=> p))])
     const options = {
       responsive: true,
       plugins: {
