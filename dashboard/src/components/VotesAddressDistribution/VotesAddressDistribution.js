@@ -27,7 +27,8 @@ ChartJS.defaults.color = "#fff";
 ChartJS.defaults.backgroundColor = "#fff";
 ChartJS.defaults.borderColor = "#fff";
 
-export default function VotesAddressDistribution() {
+export default function VotesAddressDistribution(props) {
+  const {proposalId} = props
   const [rawData, setRawData] = useState([])
   const [chartData, setChartData] = useState({options:null, data:null})
   
@@ -47,14 +48,12 @@ export default function VotesAddressDistribution() {
       return
     }
 
-    const proposal_id = 3
-
     const data = {
-      labels: [...rawData.filter((d)=>d.proposal_id==proposal_id).map((p)=> p.n_addresses)],
+      labels: [...rawData.filter((d)=>d.proposal_id==proposalId).map((p)=> p.n_addresses)],
       datasets: [{
           label: '',
           data:
-          rawData.filter((d)=>d.proposal_id==proposal_id).map((d)=>
+          rawData.filter((d)=>d.proposal_id==proposalId).map((d)=>
           {
             return d.voting_power_cumsum
           }),
@@ -68,11 +67,12 @@ export default function VotesAddressDistribution() {
       responsive: true,
       plugins: {
         legend: {
+          display: false,
           position: 'top',
         },
         title: {
           display: true,
-          text: 'Chart.js Line Chart',
+          text: 'Cumulative Voting Power',
         },
       },
       elements: {
@@ -102,7 +102,7 @@ export default function VotesAddressDistribution() {
     }
     setChartData(cd)
     console.log(chartData, cd)
-  },[rawData])
+  },[rawData, proposalId])
 
   const options = {
     responsive: true,

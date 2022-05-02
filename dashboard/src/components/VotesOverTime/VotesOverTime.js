@@ -27,7 +27,8 @@ ChartJS.defaults.color = "#fff";
 ChartJS.defaults.backgroundColor = "#fff";
 ChartJS.defaults.borderColor = "#fff";
 
-export default function VotesOverTime() {
+export default function VotesOverTime(props) {
+  const {proposalId} = props
   const [rawData, setRawData] = useState([])
   const [chartData, setChartData] = useState({options:null, data:null})
   
@@ -47,14 +48,12 @@ export default function VotesOverTime() {
       return
     }
 
-    const proposal_id = 3
-
     const data = {
-      labels: [...new Set(rawData.filter((d)=>d.proposal_id==proposal_id).map((i, p)=> p))],
+      labels: [...new Set(rawData.filter((d)=>d.proposal_id==proposalId).map((i, p)=> p))],
       datasets: [{
           label: 'For',
           data:
-          rawData.filter((d)=>d.proposal_id==proposal_id).sort((a, b) => a.hr.localeCompare(b.hr)).map((d)=>
+          rawData.filter((d)=>d.proposal_id==proposalId).sort((a, b) => a.hr.localeCompare(b.hr)).map((d)=>
           {
             let datapoint = {}
             datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
@@ -70,7 +69,7 @@ export default function VotesOverTime() {
         {
           label: 'Against',
           data:
-          rawData.filter((d)=>d.proposal_id==proposal_id)
+          rawData.filter((d)=>d.proposal_id==proposalId)
                  .sort((a, b) => a.hr.localeCompare(b.hr))
                  .map((d)=>
           {
@@ -93,10 +92,11 @@ export default function VotesOverTime() {
       responsive: true,
       plugins: {
         legend: {
+          display: false,
           position: 'top',
         },
         title: {
-          display: true,
+          display: false,
           text: 'Chart.js Line Chart',
         },
       },
@@ -127,7 +127,7 @@ export default function VotesOverTime() {
     }
     setChartData(cd)
     console.log(chartData, cd)
-  },[rawData])
+  },[rawData,proposalId])
 
   const options = {
     responsive: true,

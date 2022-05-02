@@ -43,6 +43,17 @@
   color: #61dafb;
 }
 
+.proposal-selector{
+  background: transparent;
+  color: white;
+  border: none;
+  border-bottom: solid;
+}
+
+.proposal-selector:focus-visible{
+  outline: none;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
