@@ -1,5 +1,6 @@
 import './App.css';
 import 'chart.js/auto';
+import MajorityPerVote from './components/MajorityPerVote/MajorityPerVote'
 import VotesOverTime from './components/VotesOverTime/VotesOverTime.js'
 import ProposalRecap from './components/ProposalRecap/ProposalRecap.js'
 import TopVotersPerProposal from './components/TopVotersPerProposal/TopVotersPerProposal';
@@ -22,6 +23,10 @@ export default function App() {
           <div className='charts-container'>
             <ProposalRecap/>
             <TopVotersPerProposal/>
+        </div>
+        <div className='charts-container'>
+            <MajorityPerVote/>
+            <ProposalRecap/>
         </div>
         <select className='proposal-selector' id="proposal_id" onChange={(e)=>setProposalId(e.target.options.selectedIndex+1)}>
           <option value={1}>Proposal #1</option>

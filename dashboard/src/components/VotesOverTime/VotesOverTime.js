@@ -144,6 +144,11 @@ export default function VotesOverTime(props) {
     console.log(chartData.options, chartData.data)
     return (
       <div className='chart-container'>
+      <div className='chart-title'>Titolo</div>
+      <div className='chart-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+           ut aliquip ex ea commodo consequat.</div>
         { (chartData.data)&&
           <Line options={chartData.options} data={chartData.data} />
         }

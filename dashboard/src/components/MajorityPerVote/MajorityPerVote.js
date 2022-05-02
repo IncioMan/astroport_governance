@@ -28,12 +28,11 @@ ChartJS.defaults.backgroundColor = "#fff";
 ChartJS.defaults.borderColor = "#fff";
 
 export default function VotesAddressDistribution(props) {
-  const {proposalId} = props
   const [rawData, setRawData] = useState([])
   const [chartData, setChartData] = useState({options:null, data:null})
   
   useEffect(()=>{
-    axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/top_various_prop")
+    axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/majority_per_vote")
         .then(function (response) {
           setRawData(response.data)
           console.log("habemus data3", response.data)
@@ -49,13 +48,13 @@ export default function VotesAddressDistribution(props) {
     }
 
     const data = {
-      labels: [...rawData.filter((d)=>d.proposal_id==proposalId).map((p)=> p.n_addresses)],
+      labels: [...rawData.map((p)=> p.proposal_id)],
       datasets: [{
           label: '',
           data:
-          rawData.filter((d)=>d.proposal_id==proposalId).map((d)=>
+          rawData.map((d)=>
           {
-            return d.voting_power_cumsum
+            return d.n_for_majority
           }),
           fill: false,
           borderColor: '#7fe6a2',
@@ -72,7 +71,7 @@ export default function VotesAddressDistribution(props) {
         },
         title: {
           display: true,
-          text: 'Cumulative Voting Power',
+          text: 'Number of Addresses holding the Majority of Voting Power',
         },
       },
       elements: {
@@ -91,7 +90,9 @@ export default function VotesAddressDistribution(props) {
         y: {
           grid:{
             display: false
-          }
+          },
+          max: 20,
+          min: 0
         },
       },
     };
@@ -102,23 +103,16 @@ export default function VotesAddressDistribution(props) {
     }
     setChartData(cd)
     console.log(chartData, cd)
-  },[rawData, proposalId])
+  },[rawData])
 
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Line Chart',
-      },
-    },
-  }
     console.log(chartData.options, chartData.data)
     return (
       <div className='chart-container'>
+      <div className='chart-title'>Titolo</div>
+      <div className='chart-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+           ut aliquip ex ea commodo consequat.</div>
         { (chartData.data)&&
           <Line options={chartData.options} data={chartData.data} />
         }
