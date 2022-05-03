@@ -50,6 +50,7 @@
   border-bottom: solid;
   font-size: 20px;
   margin: 0px 30px;
+  border: solid;
 }
 
 .proposal-selector:focus-visible{
@@ -93,8 +94,12 @@
 }
 
 .title{
-  font-size: 26px;
+  font-size: 32px;
   padding-left: 10px;
+  font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    letter-spacing: -0.005em;
 }
 
 .title-container{

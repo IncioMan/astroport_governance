@@ -143,7 +143,7 @@ export default function TopVotersPerProposal2(props) {
 
   return (
     <div className='chart-container'>
-      <div className='chart-title'>Titolo</div>
+      <div className='chart-title'>Voters Overview</div>
       <div className='chart-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
@@ -151,6 +151,7 @@ export default function TopVotersPerProposal2(props) {
       <Slider className="slider-range"
         getAriaLabel={() => 'Temperature range'}
         value={range}
+        step={0.1}
         onChange={handleChange}
         valueLabelDisplay="auto"
       />

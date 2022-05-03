@@ -95,7 +95,7 @@ export default function ProposalRecap() {
 
   return (
     <div className='chart-container'>
-      <div className='chart-title'>Titolo</div>
+      <div className='chart-title'>Total Votes Distribution</div>
       <div className='chart-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
