@@ -38,6 +38,7 @@ export default function TopVotersPerProposal2(props) {
     }
 
     const data = {
+      labels: [...new Set(rawData.map((p)=>p.result))],
       datasets: [
         {
           label: '# of Votes',
@@ -57,15 +58,30 @@ export default function TopVotersPerProposal2(props) {
 
   
 
-    const labels = [...new Set(rawData.map((p)=>p.result))];
     const options = {
       plugins: {
         legend:{
-          display: false
+          display: true,
+          position: 'right'
         },
         title: {
           display: false
-        }
+        },
+        tooltip: {
+          enabled: true,
+          callbacks: {
+            label: function(context) {
+                let label = context.dataset.label || '';
+                let labelProposals = 'Number of proposals: '
+                let labelResult='' 
+                if (context.raw) {
+                    labelResult += 'Result: '+context.label
+                    labelProposals += context.raw
+                }
+                return [label,labelResult, labelProposals];
+              }
+            }
+          }
       },
       responsive: true,
       radius: 130,
@@ -81,7 +97,7 @@ export default function TopVotersPerProposal2(props) {
 
   return (
     <div className='chart-container'>
-      <div className='chart-title'>Voters Overview</div>
+      <div className='chart-title'>Votes Overview</div>
       <div className='chart-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi

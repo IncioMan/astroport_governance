@@ -9,3 +9,20 @@
   width: 10px !important;
   height: 10px !important;
 }
+
+.slider-box-container{
+  display: flex;
+    justify-content: space-around;
+}
+
+.slider-text{
+  font-weight: bold;
+}
+
+.slider-text-container{
+  font-size: 14px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  padding-bottom: 4px;
+}

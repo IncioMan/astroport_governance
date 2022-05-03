@@ -57,7 +57,7 @@ export default function VotesAddressDistribution(props) {
             return d.n_for_majority
           }),
           fill: false,
-          borderColor: '#ffffff',
+          borderColor: '#ef5176',
           tension: 0.1
         }
       ],

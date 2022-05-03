@@ -148,13 +148,16 @@ export default function TopVotersPerProposal2(props) {
          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
            ut aliquip ex ea commodo consequat.</div>
-      <Slider className="slider-range"
-        getAriaLabel={() => 'Temperature range'}
-        value={range}
-        step={0.1}
-        onChange={handleChange}
-        valueLabelDisplay="auto"
-      />
+      <div className='slider-box-container'>
+        <div className='slider-text-container'><div className='slider-text'>Quantile:</div></div>
+        <Slider className="slider-range"
+          getAriaLabel={() => 'Temperature range'}
+          value={range}
+          step={0.1}
+          onChange={handleChange}
+          valueLabelDisplay="auto"
+        />
+      </div>
       { (chartData.data)&&
         <Scatter options={chartData.options} data={chartData.data}/>
       }
