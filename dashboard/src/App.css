@@ -91,7 +91,7 @@
 .chart-desc{
   text-align: initial;
   font-size: 14px;
-  height: 64px;
+  min-height: 64px;
   padding: 20px  0px ;
   font-family: "Source Sans Pro", sans-serif;
     font-weight: 400;

@@ -108,10 +108,13 @@ export default function VotesAddressDistribution(props) {
     return (
       <div className='chart-container'>
       <div className='chart-title'>Addresses holding the Majority of Voting Power</div>
-      <div className='chart-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-           ut aliquip ex ea commodo consequat.</div>
+      <div className='chart-desc'>
+        In each proposal, what is the minimum amount
+        of addresses which were needed to reach majority?
+        The higher this number is, the more decentralized the governance power is.
+        Has this value been increasing or decreasing over the course of the different
+        proposals?
+      </div>
         { (chartData.data)&&
           <Line options={chartData.options} data={chartData.data} />
         }

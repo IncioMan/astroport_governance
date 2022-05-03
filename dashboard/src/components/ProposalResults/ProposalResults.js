@@ -98,10 +98,11 @@ export default function TopVotersPerProposal2(props) {
   return (
     <div className='chart-container'>
       <div className='chart-title'>Votes Overview</div>
-      <div className='chart-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-           ut aliquip ex ea commodo consequat.</div>
+      <div className='chart-desc'>
+        Not all proposals get voted through. Let's plot 
+        how many proposals have passed/failed out of all the ones
+        put up for vote. Have the majority of proposals passed?  
+      </div>
       { (chartData.data)&&
         <div className='doughnut-container'>
          <Doughnut  options={chartData.options} data={chartData.data}/>

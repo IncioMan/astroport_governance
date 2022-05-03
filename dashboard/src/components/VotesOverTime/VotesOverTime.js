@@ -145,10 +145,13 @@ export default function VotesOverTime(props) {
     return (
       <div className='chart-container'>
       <div className='chart-title'>Votes Distribution Over Time</div>
-      <div className='chart-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-           ut aliquip ex ea commodo consequat.</div>
+      <div className='chart-desc'>
+        In this chart we can observe the amount of votes
+        for each option (for/against) over time. This can highlight
+        patterns where some proposals have experienced a large consensus
+        from the beginning and others have seen the result changed halfway or at the end
+        of the voting period.
+      </div>
         { (chartData.data)&&
           <Line options={chartData.options} data={chartData.data} />
         }

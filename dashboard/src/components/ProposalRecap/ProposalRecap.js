@@ -96,10 +96,13 @@ export default function ProposalRecap() {
   return (
     <div className='chart-container'>
       <div className='chart-title'>Total Votes Distribution</div>
-      <div className='chart-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-           ut aliquip ex ea commodo consequat.</div>
+      <div className='chart-desc'>
+        Each proposal is put up for a vote and the community
+        can cast a vote according to the amount of voting power
+        they have from their ASTRO holdings. Let's plot the results
+        from each proposal. Have most of the proposals passed? With what
+        ratio of for/against votes? Which have been the most controversial proposals?
+      </div>
       <div style={{height: "32px"}}></div>
       { (proposalChartData.data)&&
         <Bar options={proposalChartData.options} data={proposalChartData.data}/>

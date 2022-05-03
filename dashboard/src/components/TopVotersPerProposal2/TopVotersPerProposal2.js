@@ -144,10 +144,14 @@ export default function TopVotersPerProposal2(props) {
   return (
     <div className='chart-container'>
       <div className='chart-title'>Voters Overview</div>
-      <div className='chart-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-           ut aliquip ex ea commodo consequat.</div>
+      <div className='chart-desc'>
+        Single addresses might have much more power
+        than other voters. In this chart we plot each single
+        address who has voted for the different proposals. You can 
+        select the range of voters according to their voting power.
+        Try selecting the 99 to 100 range: this will only show you how 
+        the top 1% of voters per voting power has voted.  
+      </div>
       <div className='slider-box-container'>
         <div className='slider-text-container'><div className='slider-text'>Quantile:</div></div>
         <Slider className="slider-range"
