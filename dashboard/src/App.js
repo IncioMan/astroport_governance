@@ -3,7 +3,7 @@ import 'chart.js/auto';
 import MajorityPerVote from './components/MajorityPerVote/MajorityPerVote'
 import VotesOverTime from './components/VotesOverTime/VotesOverTime.js'
 import ProposalRecap from './components/ProposalRecap/ProposalRecap.js'
-import TopVotersPerProposal from './components/TopVotersPerProposal/TopVotersPerProposal';
+import ProposalResults from './components/ProposalResults/ProposalResults';
 import VotesAddressDistribution from './components/VotesAddressDistribution/VotesAddressDistribution';
 import { useState } from 'react';
 import TopVotersPerProposal2 from './components/TopVotersPerProposal2/TopVotersPerProposal2';
@@ -27,7 +27,7 @@ export default function App() {
         </div>
         <div className='charts-container'>
             <MajorityPerVote/>
-            <ProposalRecap/>
+            <ProposalResults/>
         </div>
         <div className='proposal-selector-container'>
           <div className='proposal-selector-line'></div>
