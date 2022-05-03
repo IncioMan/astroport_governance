@@ -88,6 +88,14 @@
   opacity: 0.5;
 }
 
+.title-bar{
+  width: 61%;
+  background: #ffff;
+  opacity: 0.5;
+  height: 2px;
+  margin-left: 20px;
+}
+
 .chart-desc{
   text-align: initial;
   font-size: 14px;
@@ -110,11 +118,21 @@
     letter-spacing: -0.005em;
 }
 
+.title-banner{
+  width: 100%;
+    display: flex;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    padding-bottom: 24px;
+    /* padding-right: 72px; */
+    padding-left: 48px;
+}
+
 .title-container{
-  padding: 24px;
-  display: flex;
-  color: white;
-  text-decoration: none;
+    display: flex;
+    color: white;
+    /* width: 35%; */
+    text-decoration: none;
 }
 
 @keyframes App-logo-spin {

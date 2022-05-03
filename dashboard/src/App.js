@@ -17,10 +17,13 @@ export default function App() {
   return (
     <div className='App'>
         <div className='App-header'>
-          <a className='title-container' href={"https://lbp.neb.money/"}>
-            <img src={"https://raw.githubusercontent.com/IncioMan/astroport_governance/master/images/logo.svg"}/>
-            <div className='title'>Governance Dashboard</div>
-          </a>
+          <div className='title-banner'>
+            <a className='title-container' href={"https://app.astroport.fi/governance"}>
+              <img src={"https://raw.githubusercontent.com/IncioMan/astroport_governance/master/images/logo.svg"}/>
+              <div className='title'>Governance Dashboard</div>
+            </a>
+            <div className='title-bar'></div>
+          </div>
           <div className='charts-container'>
             <ProposalRecap/>
             <TopVotersPerProposal2 topRange={2}/>
