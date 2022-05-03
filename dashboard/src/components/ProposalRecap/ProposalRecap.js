@@ -100,6 +100,7 @@ export default function ProposalRecap() {
          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
            ut aliquip ex ea commodo consequat.</div>
+      <div style={{height: "32px"}}></div>
       { (proposalChartData.data)&&
         <Bar options={proposalChartData.options} data={proposalChartData.data}/>
       }

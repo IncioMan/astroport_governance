@@ -29,14 +29,18 @@ export default function App() {
             <MajorityPerVote/>
             <ProposalRecap/>
         </div>
-        <select className='proposal-selector' id="proposal_id" onChange={(e)=>setProposalId(e.target.options.selectedIndex+1)}>
-          <option value={1}>Proposal #1</option>
-          <option value={2}>Proposal #2</option>
-          <option value={3}>Proposal #3</option>
-          <option value={4}>Proposal #4</option>
-          <option value={5}>Proposal #5</option>
-          <option value={6}>Proposal #6</option>
-        </select>
+        <div className='proposal-selector-container'>
+          <div className='proposal-selector-line'></div>
+          <select className='proposal-selector' id="proposal_id" onChange={(e)=>setProposalId(e.target.options.selectedIndex+1)}>
+            <option value={1}>Proposal #1</option>
+            <option value={2}>Proposal #2</option>
+            <option value={3}>Proposal #3</option>
+            <option value={4}>Proposal #4</option>
+            <option value={5}>Proposal #5</option>
+            <option value={6}>Proposal #6</option>
+          </select>
+          <div className='proposal-selector-line'></div>
+        </div>
         <div className='charts-container'>
             <VotesOverTime proposalId={proposalId}/>
             <VotesAddressDistribution proposalId={proposalId}/>

@@ -12,6 +12,7 @@ import { faker } from '@faker-js/faker';
 import 'chart.js/auto';
 import { useEffect, useState } from 'react';
 import Slider from '@mui/material/Slider';
+import './TopVotersPerProposal2.css';
 const axios = require('axios').default;
 
 
@@ -56,7 +57,7 @@ export default function TopVotersPerProposal2(props) {
       datasets: [{
           label: 'For',
           data:
-          rawData.filter((d)=>d.vote=='for').filter((p)=>p.n_addresses<topRange).map((d)=>
+          rawData.filter((d)=>d.vote=='for').filter((p)=>(p.n_addresses_perc<=range[1])&&(p.n_addresses_perc>=range[0])).map((d)=>
           {
             let datapoint = {}
             datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
@@ -70,7 +71,7 @@ export default function TopVotersPerProposal2(props) {
         {
           label: 'Against',
           data:
-          rawData.filter((d)=>d.vote=='against').filter((p)=>p.n_addresses<topRange).map((d)=>
+          rawData.filter((d)=>d.vote=='against').filter((p)=>(p.n_addresses_perc<=range[1])&&(p.n_addresses_perc>=range[0])).map((d)=>
           {
             let datapoint = {}
             datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
@@ -137,7 +138,7 @@ export default function TopVotersPerProposal2(props) {
     }
     setChartData(cd)
     console.log(chartData, cd)
-  },[rawData,topRange])
+  },[rawData,range])
   
 
   return (
@@ -147,7 +148,7 @@ export default function TopVotersPerProposal2(props) {
          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
            ut aliquip ex ea commodo consequat.</div>
-      <Slider
+      <Slider className="slider-range"
         getAriaLabel={() => 'Temperature range'}
         value={range}
         onChange={handleChange}
