@@ -6,6 +6,7 @@ import ProposalRecap from './components/ProposalRecap/ProposalRecap.js'
 import TopVotersPerProposal from './components/TopVotersPerProposal/TopVotersPerProposal';
 import VotesAddressDistribution from './components/VotesAddressDistribution/VotesAddressDistribution';
 import { useState } from 'react';
+import TopVotersPerProposal2 from './components/TopVotersPerProposal2/TopVotersPerProposal2';
 const axios = require('axios').default;
 
 
@@ -22,7 +23,7 @@ export default function App() {
           </a>
           <div className='charts-container'>
             <ProposalRecap/>
-            <TopVotersPerProposal/>
+            <TopVotersPerProposal2 topRange={2}/>
         </div>
         <div className='charts-container'>
             <MajorityPerVote/>

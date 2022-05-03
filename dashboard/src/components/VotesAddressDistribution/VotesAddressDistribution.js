@@ -71,8 +71,7 @@ export default function VotesAddressDistribution(props) {
           position: 'top',
         },
         title: {
-          display: true,
-          text: 'Cumulative Voting Power',
+          display: false,
         },
       },
       elements: {
@@ -104,22 +103,10 @@ export default function VotesAddressDistribution(props) {
     console.log(chartData, cd)
   },[rawData, proposalId])
 
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Line Chart',
-      },
-    },
-  }
     console.log(chartData.options, chartData.data)
     return (
       <div className='chart-container'>
-      <div className='chart-title'>Titolo</div>
+      <div className='chart-title'>Cumulative Voting Power</div>
       <div className='chart-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi

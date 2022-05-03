@@ -57,7 +57,7 @@ export default function VotesAddressDistribution(props) {
             return d.n_for_majority
           }),
           fill: false,
-          borderColor: '#7fe6a2',
+          borderColor: '#ffffff',
           tension: 0.1
         }
       ],
@@ -70,8 +70,7 @@ export default function VotesAddressDistribution(props) {
           position: 'top',
         },
         title: {
-          display: true,
-          text: 'Number of Addresses holding the Majority of Voting Power',
+          display: false,
         },
       },
       elements: {
@@ -91,7 +90,7 @@ export default function VotesAddressDistribution(props) {
           grid:{
             display: false
           },
-          max: 20,
+          max: 10,
           min: 0
         },
       },
@@ -108,7 +107,7 @@ export default function VotesAddressDistribution(props) {
     console.log(chartData.options, chartData.data)
     return (
       <div className='chart-container'>
-      <div className='chart-title'>Titolo</div>
+      <div className='chart-title'>Addresses holding the Majority of Voting Power</div>
       <div className='chart-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi

@@ -57,6 +57,10 @@
 
 .chart-title{
   font-size: 24px;
+  font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    letter-spacing: -0.005em;
 }
 
 .chart-desc{
@@ -64,6 +68,12 @@
   font-size: 14px;
   height: 64px;
   padding: 20px  0px ;
+  font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgb(255, 255, 255);
+    
+    text-size-adjust: 100%;
 }
 
 .title{
