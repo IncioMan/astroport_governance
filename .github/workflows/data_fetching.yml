@@ -16,7 +16,8 @@ jobs:
           pipenv install
       - name: data fetcher
         run: |
-          pipenv run python ./notebook/data_fetcher.py
+          cd notebook
+          pipenv run python ./data_fetcher.py
       - name: commit files
         run: |
           git config --global user.name 'IncioMan'
