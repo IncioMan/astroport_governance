@@ -153,7 +153,7 @@ export default function TopVotersPerProposal2(props) {
         the top 1% of voters per voting power has voted.  
       </div>
       <div className='slider-box-container'>
-        <div className='slider-text-container'><div className='slider-text'>Quantile:</div></div>
+        <div className='slider-text-container'><div className='slider-text'>Percentile:</div></div>
         <Slider className="slider-range"
           getAriaLabel={() => 'Temperature range'}
           value={range}
@@ -161,6 +161,7 @@ export default function TopVotersPerProposal2(props) {
           onChange={handleChange}
           valueLabelDisplay="auto"
         />
+        <div className='slider-text-container'><div className='slider-text'>{range[0]}-{range[1]}</div></div>
       </div>
       { (chartData.data)&&
         <Scatter options={chartData.options} data={chartData.data}/>

@@ -21,8 +21,10 @@
 
 .slider-text-container{
   font-size: 14px;
-  text-align: center;
+  /* text-align: unset; */
   align-items: center;
   display: flex;
   padding-bottom: 4px;
+  min-width: 100px;
+  justify-content: center;
 }
