@@ -1,0 +1,14 @@
+.table-container{
+    width: 100%;
+    /* margin: 0px 48px; */
+    text-align: center;
+    font-size: 14px;
+    min-height: 64px;
+    padding: 20px 0px;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+.table-my{
+  width: 100%;
+  padding: 0px 24px;
+}

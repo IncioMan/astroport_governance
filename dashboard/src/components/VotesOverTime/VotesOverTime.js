@@ -36,7 +36,6 @@ export default function VotesOverTime(props) {
     axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/votes_over_time")
         .then(function (response) {
           setRawData(response.data)
-          console.log("habemus data3", response.data)
         })
         .catch(function (error) {
             console.log(error);
@@ -111,11 +110,19 @@ export default function VotesOverTime(props) {
           stacked: true,
           grid:{
             display: false
+          },
+          title: {
+            display: true,
+            text: 'Number of hours since the start'
           }
         },
         y: {
           grid:{
             display: false
+          },
+          title: {
+            display: true,
+            text: 'Amount of Voting Power'
           }
         },
       },

@@ -41,7 +41,6 @@ export default function TopVotersPerProposal2(props) {
     axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/voting_power_cumulative")
         .then(function (response) {
           setRawData(response.data)
-          console.log("habemus data2", response.data)
         })
         .catch(function (error) {
             console.log(error);
@@ -123,12 +122,26 @@ export default function TopVotersPerProposal2(props) {
           position: 'bottom',
           grid:{
             display: false
+          },
+          title: {
+            display: true,
+            text: 'Proposals'
+          },
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function(value, index, ticks) {
+                return '#' + (parseInt(value) +1);
+            }
           }
         },
         y: {
           grid:{
             display: false
-          }
+          },
+          title: {
+            display: true,
+            text: 'Governance Power'
+          },
         }
       }
     };

@@ -4,6 +4,7 @@ import MajorityPerVote from './components/MajorityPerVote/MajorityPerVote'
 import VotesOverTime from './components/VotesOverTime/VotesOverTime.js'
 import ProposalRecap from './components/ProposalRecap/ProposalRecap.js'
 import ProposalResults from './components/ProposalResults/ProposalResults';
+import MyTable from './components/MyTable/MyTable';
 import VotesAddressDistribution from './components/VotesAddressDistribution/VotesAddressDistribution';
 import { useState } from 'react';
 import TopVotersPerProposal2 from './components/TopVotersPerProposal2/TopVotersPerProposal2';
@@ -24,6 +25,7 @@ export default function App() {
             </a>
             <div className='title-bar'></div>
           </div>
+          <MyTable></MyTable>
           <div className='charts-container'>
             <ProposalRecap/>
             <TopVotersPerProposal2 topRange={2}/>

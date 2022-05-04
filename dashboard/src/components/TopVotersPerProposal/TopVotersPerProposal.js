@@ -33,7 +33,6 @@ export default function TopVotersPerProposal() {
     axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/top_voters_per_proposal")
         .then(function (response) {
           setRawData(response.data)
-          console.log("habemus data2", response.data)
         })
         .catch(function (error) {
             console.log(error);

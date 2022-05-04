@@ -36,7 +36,6 @@ export default function VotesAddressDistribution(props) {
     axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/voting_power_cumulative")
         .then(function (response) {
           setRawData(response.data)
-          console.log("habemus data3", response.data)
         })
         .catch(function (error) {
             console.log(error);
