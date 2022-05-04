@@ -11,11 +11,12 @@ jobs:
         uses: actions/checkout@v2
       - name: setup
         run: |
+          cd notebook
           pip install pipenv
           pipenv install
       - name: data fetcher
         run: |
-          pipenv run python ./data_fetcher.py
+          pipenv run python ./notebook/data_fetcher.py
       - name: commit files
         run: |
           git config --global user.name 'IncioMan'

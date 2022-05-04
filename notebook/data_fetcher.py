@@ -10,4 +10,4 @@ def claim(claim_hash):
 data_provider = AstroDataProvider(claim)
 data_provider.load()
 data_provider.parse()
-data_provider.to_file('./data')
+data_provider.to_file('../data')
