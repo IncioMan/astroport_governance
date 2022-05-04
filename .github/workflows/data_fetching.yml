@@ -20,6 +20,7 @@ jobs:
           pipenv run python ./data_fetcher.py
       - name: commit files
         run: |
+          cd ..
           git config --global user.name 'IncioMan'
           git config --global user.email 'incio_man@live.com'
           git add ./data/*
