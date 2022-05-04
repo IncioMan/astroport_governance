@@ -14,7 +14,6 @@ import requests
 import numpy as np
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
-alt.renderers.set_embed_options(theme='dark')
 pd.set_option('display.max_colwidth', None)
 
 
