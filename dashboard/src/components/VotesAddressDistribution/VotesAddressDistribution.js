@@ -81,17 +81,26 @@ export default function VotesAddressDistribution(props) {
       },
       scales: {
         x: {
-          stacked: true,
+          type: 'linear',
+          position: 'bottom',
           grid:{
             display: false
-          }
+          },
+          title: {
+            display: true,
+            text: 'Number of addresses'
+          },
         },
         y: {
           grid:{
             display: false
-          }
-        },
-      },
+          },
+          title: {
+            display: true,
+            text: '% of Voting Power'
+          },
+        }
+      }
     };
     
     const cd = {

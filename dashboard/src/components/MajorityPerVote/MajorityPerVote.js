@@ -81,18 +81,33 @@ export default function VotesAddressDistribution(props) {
       },
       scales: {
         x: {
-          stacked: true,
+          type: 'linear',
+          position: 'bottom',
           grid:{
             display: false
+          },
+          title: {
+            display: true,
+            text: 'Proposals'
+          },
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function(value, index, ticks) {
+                return '#' + (parseInt(value) +1);
+            }
           }
         },
         y: {
           grid:{
             display: false
           },
+          title: {
+            display: true,
+            text: 'Min n° of addresses to reach majority'
+          },
           max: 10,
           min: 0
-        },
+        }
       },
     };
     
