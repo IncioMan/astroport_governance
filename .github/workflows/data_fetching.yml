@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: code check out
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: setup
         run: |
           cd notebook
@@ -20,7 +20,6 @@ jobs:
           pipenv run python ./data_fetcher.py
       - name: commit files
         run: |
-          cd ..
           git config --global user.name 'IncioMan'
           git config --global user.email 'incio_man@live.com'
           git add ./data/*
