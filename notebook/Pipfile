@@ -6,5 +6,6 @@ name = "pypi"
 [packages]
 pandas = "*"
 requests = "*"
+matplotlib = "*"
 
 [dev-packages]
