@@ -6,9 +6,20 @@
     min-height: 64px;
     padding: 20px 0px;
     font-family: "Source Sans Pro", sans-serif;
+    padding-left: 4%;
 }
 
 .table-my{
-  width: 100%;
-  padding: 0px 24px;
+  width: 100% !important;
+  color: #ffff !important;
+}
+
+.table-container{
+  padding-left: 2%;
+  /* padding-right: 2%; */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 46%;
+  min-width: 500px;
 }

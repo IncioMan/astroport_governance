@@ -116,7 +116,7 @@ export default function ProposalRecap() {
         from each proposal. Have most of the proposals passed? With what
         ratio of for/against votes? Which have been the most controversial proposals?
       </div>
-      <div style={{height: "32px"}}></div>
+      <div style={{height: "24px"}}></div>
       { (proposalChartData.data)&&
         <Bar options={proposalChartData.options} data={proposalChartData.data}/>
       }

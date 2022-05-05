@@ -25,7 +25,10 @@ export default function App() {
             </a>
             <div className='title-bar'></div>
           </div>
-          <MyTable></MyTable>
+          <div className='charts-container'>
+            <MyTable/>
+            <ProposalResults/>
+        </div>
           <div className='charts-container'>
             <ProposalRecap/>
             <TopVotersPerProposal2 topRange={2}/>
@@ -43,6 +46,8 @@ export default function App() {
             <option value={4}>Proposal #4</option>
             <option value={5}>Proposal #5</option>
             <option value={6}>Proposal #6</option>
+            <option value={5}>Proposal #7</option>
+            <option value={6}>Proposal #8</option>
           </select>
           <div className='proposal-selector-line'></div>
         </div>
