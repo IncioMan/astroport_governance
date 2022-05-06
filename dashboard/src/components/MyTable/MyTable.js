@@ -74,8 +74,8 @@ export default function MyTable() {
 
   return (
     <div className='table-container'>
-    <TableContainer component={Paper} style={{height: '100%', background:'transparent'}}>
-      <Table sx={{ minWidth: 650, 'th': { border: 0 }}} size="small" aria-label="a dense table">
+    <TableContainer component={Paper} style={{background:'transparent'}}>
+      <Table sx={{ minWidth: 400, 'th': { border: 0 }}} size="small" aria-label="a dense table">
         <TableHead style={{position: "sticky", top: "0"}}>
           <TableRow style={{backgroundColor:'#000e37'}}>
             {['Proposal','Title', 'Status'].map((h)=>{
@@ -90,17 +90,26 @@ export default function MyTable() {
               sx={{ 'td': { border: 0 } }}
               style={{backgroundColor:'#000e37', color:'white !important'}}
             >
-              <TableCell component="th" scope="row"
-              style={{ color:'white', width:'100px'}} align="center">
-                {row.proposal_id}
-              </TableCell>
-              <TableCell style={{width:'200px', padding:'6px 0px'}} align="center"> 
+              <TableCell 
+                component="td" 
+                scope="row"
+                style={{ color:'white'}} 
+                sx={{ maxWidth: 100}}
+                className='short' align="center">{row.proposal_id}</TableCell>
+              <TableCell 
+                component="td" 
+                style={{padding:'6px 0px'}} 
+                sx={{ maxWidth: 200}}
+                align="center"> 
                 <a style={{color:'#ada3ff'}} 
                   href={'https://app.astroport.fi/governance/proposal/'+row.proposal_id}
                   target={"_blank"}>
                   {row.submit_proposal.title}
                 </a></TableCell>
-              <TableCell style={{color: colors[row.status], width:'100px'}} align="center">{row.status}</TableCell>
+              <TableCell 
+                style={{color: colors[row.status]}}
+                sx={{ maxWidth: 100}} 
+                align="center">{row.status}</TableCell>
             </TableRow>
           ))}
         </TableBody>
