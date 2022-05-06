@@ -44,11 +44,13 @@ export default function TopVotersPerProposal2(props) {
           data: rawData.map((p)=>p.proposal_id),
           backgroundColor: [
             '#ef5176',
-            '#7fe6a2',
+            '#ffffff',
+            '#7fe6a2'
           ],
           borderColor: [
             '#ef5176',
-            '#7fe6a2',
+            '#ffffff',
+            '#7fe6a2'
           ],
           borderWidth: 1,
         },
