@@ -1,13 +1,7 @@
 import './App.css';
 import 'chart.js/auto';
-import MajorityPerVote from './components/MajorityPerVote/MajorityPerVote'
-import VotesOverTime from './components/VotesOverTime/VotesOverTime.js'
-import ProposalRecap from './components/ProposalRecap/ProposalRecap.js'
-import ProposalResults from './components/ProposalResults/ProposalResults';
-import TableProposals from './components/TableProposals/TableProposals';
-import VotesAddressDistribution from './components/VotesAddressDistribution/VotesAddressDistribution';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useState } from 'react';
-import TopVotersPerProposal2 from './components/TopVotersPerProposal/TopVotersPerProposal';
 import Overview from './components/Overview/Overview';
 import Proposal from './components/Proposal/Proposal';
 const axios = require('axios').default;
@@ -27,8 +21,12 @@ export default function App() {
             </a>
             <div className='title-bar'></div>
           </div>
-          <Overview/>
-          <Proposal/>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Overview />} />
+              <Route path="/proposal" element={<Proposal />} />
+            </Routes>
+          </BrowserRouter>
         </div>
       </div>
   );
