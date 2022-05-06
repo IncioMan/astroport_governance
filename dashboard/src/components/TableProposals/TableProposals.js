@@ -74,7 +74,7 @@ export default function MyTable() {
   return (
     <div className='table-container'>
     <div className='chart-title'>Proposals</div>
-    <TableContainer component={Paper} style={{maxHeight: '450px', background:'transparent'}}>
+    <TableContainer component={Paper} style={{maxHeight: '450px',boxShadow: 'none', background:'transparent'}}>
       <Table sx={{ minWidth: 400, 'th': { border: 0 }}} size="small" aria-label="a dense table">
         <TableHead style={{position: "sticky", top: "0"}}>
           <TableRow style={{backgroundColor:'#000e37'}}>

@@ -20,6 +20,13 @@
   padding: 2%;
 }
 
+.nav-link{
+  font-size: 24px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: rgb(255, 255, 255) !important;
+    letter-spacing: -0.005em;
+}
+
 
 
 @media (prefers-reduced-motion: no-preference) {
@@ -91,6 +98,7 @@
     padding-bottom: 24px;
     /* padding-right: 72px; */
     padding-left: 48px;
+    overflow: auto;
 }
 
 .title-container{
