@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[288]:
+# In[371]:
 
 
 import pandas as pd
@@ -17,7 +17,7 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 pd.set_option('display.max_colwidth', None)
 
 
-# In[293]:
+# In[372]:
 
 
 class AstroDataProvider:
@@ -27,6 +27,8 @@ class AstroDataProvider:
         self.votes = '4940a215-6e93-4107-bf08-50574b3e431d'
         self.astro_holders_url =daic_url.format("terra1xj49zyqrwpv5k928jwfpfy2ha668nwdgkwlrg3")
         self.xastro_holders_url =daic_url.format("terra14lpnyzc9z4g3ugr4lhm8s4nle0tq8vcltkhzh7")
+        self.curr_block = int(requests.get("https://lcd.terra.dev/blocks/latest").json()['block']['header']['height'])
+        self.votes_raw = '5de91b84-2450-4b47-b24b-20614e5dc38e'
         self.claim = claim
         
     def get_from_url(self, url):
@@ -35,6 +37,7 @@ class AstroDataProvider:
         
     def load(self):
         self.votes_df = self.claim(self.votes)
+        self.votes_raw_df = self.claim(self.votes_raw)
         #
         json = self.get_from_url(self.astro_holders_url)['result']['holders']
         self.astro_holders_df = pd.DataFrame(json.values(),json.keys()).reset_index()
@@ -44,7 +47,16 @@ class AstroDataProvider:
         self.xastro_holders_df = pd.DataFrame(json.values(),json.keys()).reset_index()
         self.xastro_holders_df.columns =  ['addr','amount']
         #
-        
+       
+    def parse_proposal_height(self):
+        df = self.votes_raw_df
+        df['proposal_end_height'] = self.votes_raw_df.event_attributes.apply(lambda x: x['proposal_end_height'])
+        df['proposal_id'] = df.event_attributes.apply(lambda x: x['proposal_id'])
+        df = df[['proposal_id','proposal_end_height']]
+        df['current_block'] = self.curr_block
+        df['Ended'] = df['proposal_end_height'] < df['current_block']
+        return df
+    
     def parse_proposal_recap(self):
         self.N_PROPOSALS = self.votes_df.proposal_id.nunique()+1
         # 
@@ -55,8 +67,16 @@ class AstroDataProvider:
         for_.columns = ['proposal_id','for','voting_power_for']
         votes = against.merge(for_, on='proposal_id')
         votes['delta'] = votes['voting_power_for'] - votes['voting_power_against'] 
-        votes['result'] = votes.apply(lambda row: 'passed' if row.delta > 0 else 'failed', axis=1)
-        votes['result'] = votes.apply(lambda row: 'passed' if row.delta > 0 else 'failed', axis=1)
+        votes['result'] = votes.apply(lambda row: 'Passed' if row.delta > 0 else 'Failed', axis=1)
+        votes['result'] = votes.apply(lambda row: 'Passed' if row.delta > 0 else 'Failed', axis=1)
+        df = self.votes_df.groupby('proposal_id').voting_power.sum().reset_index()
+        df.columns = ['proposal_id','tot_voting_power']
+        votes = votes.merge(df)
+        df2 = self.votes_df.groupby('proposal_id').voter.nunique().reset_index()
+        df2.columns = ['proposal_id','n_unique_voters']
+        votes = votes.merge(df2)
+        votes = votes.merge(self.proposal_height, on='proposal_id')
+        votes['result'] = votes.apply(lambda row: row.result if row.Ended else 'Ongoing', axis=1)
         return votes, votes.groupby('result').proposal_id.count().reset_index()
     
     def parse_top_active_voters(self):
@@ -129,12 +149,14 @@ class AstroDataProvider:
         self.votes_df['hr'] = self.votes_df.block_timestamp.apply(str).str[:-5] + '00'
         self.votes_df['day'] = self.votes_df.block_timestamp.apply(str).str[:-9]
         self.astro_holders_df.amount = self.astro_holders_df.amount/1000000
+        self.proposal_height = self.parse_proposal_height()
         self.proposal_recap, self.proposal_results = self.parse_proposal_recap()
         self.top_active_voters = self.parse_top_active_voters()
         self.dist_voting_power_per_proposal = self.parse_dist_voting_power_per_proposal()
         self.top_voters_per_proposal = self.parse_top_voters_per_proposal()
         self.votes_over_time = self.parse_votes_over_time()
         self.voting_power_cumulative, self.majority_per_vote = self.parse_voting_power_cumulative()
+        self.proposal_height = self.parse_proposal_height()
         
     def to_file(self, path='../data'):
         self.votes_df.to_json(f"{path}/votes_df",orient='records')
@@ -162,7 +184,7 @@ class AstroDataProvider:
         self.proposal_results =  pd.read_json(url.format('proposal_results'))
 
 
-# In[294]:
+# In[373]:
 
 
 def claim(claim_hash):
@@ -171,11 +193,3 @@ def claim(claim_hash):
             convert_dates=["BLOCK_TIMESTAMP"])
     df.columns = [c.lower() for c in df.columns]
     return df
-
-
-
-# In[ ]:
-
-
-
-
