@@ -1,0 +1,24 @@
+.table-container{
+    /* padding-right: 2%; */
+    align-items: center;
+    justify-content: start;
+    display: flex;
+    width: 46%;
+    /* margin: 0px 48px; */
+    text-align: center;
+    font-size: 14px;
+    padding: 20px 0px;
+    font-family: "Source Sans Pro", sans-serif;
+    min-width: 400px;
+    padding-right: 32px;
+    flex-direction: column;
+}
+
+.table-my{
+  width: 100% !important;
+  color: #ffff !important;
+}
+
+td .short {
+  width :'100px'
+}

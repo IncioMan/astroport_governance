@@ -33,7 +33,6 @@ export default function ProposalRecap() {
     axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/proposal_recap")
         .then(function (response) {
           setProposalData(response.data)
-          console.log("habemus data")
         })
         .catch(function (error) {
             console.log(error);
@@ -58,10 +57,24 @@ export default function ProposalRecap() {
           stacked: true,
           grid:{
             display: false
-          }
+          },
+          title: {
+            display: true,
+            text: 'Proposals'
+          },
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function(value, index, ticks) {
+                return '#' + (parseInt(value) +1);
+            }
+        }
         },
         y: {
-          stacked: true
+          stacked: true,
+          title: {
+            display: true,
+            text: 'Governance Power'
+          },
         },
       },
     };
@@ -103,7 +116,7 @@ export default function ProposalRecap() {
         from each proposal. Have most of the proposals passed? With what
         ratio of for/against votes? Which have been the most controversial proposals?
       </div>
-      <div style={{height: "32px"}}></div>
+      <div style={{height: "24px"}}></div>
       { (proposalChartData.data)&&
         <Bar options={proposalChartData.options} data={proposalChartData.data}/>
       }

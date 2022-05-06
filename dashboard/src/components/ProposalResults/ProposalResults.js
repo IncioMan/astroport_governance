@@ -25,7 +25,6 @@ export default function TopVotersPerProposal2(props) {
     axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/proposal_results")
         .then(function (response) {
           setRawData(response.data)
-          console.log("habemus data5", response.data)
         })
         .catch(function (error) {
             console.log(error);
@@ -81,7 +80,7 @@ export default function TopVotersPerProposal2(props) {
                 return [label,labelResult, labelProposals];
               }
             }
-          }
+        }
       },
       responsive: true,
       radius: 130,
