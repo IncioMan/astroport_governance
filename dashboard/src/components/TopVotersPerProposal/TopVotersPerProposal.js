@@ -130,7 +130,7 @@ export default function TopVotersPerProposal(props) {
           ticks: {
             // Include a dollar sign in the ticks
             callback: function(value, index, ticks) {
-                return '#' + (parseInt(value) +1);
+                return '#' + (parseInt(value));
             }
           }
         },
