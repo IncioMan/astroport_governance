@@ -11,6 +11,8 @@ import { Bar, Scatter } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import 'chart.js/auto';
 import { useEffect, useState } from 'react';
+import Slider from '@mui/material/Slider';
+import './TopVotersPerProposal.css';
 const axios = require('axios').default;
 
 
@@ -25,12 +27,18 @@ ChartJS.register(
 ChartJS.defaults.color = "#fff";
 ChartJS.defaults.backgroundColor = "#fff";
 
-export default function TopVotersPerProposal() {
+export default function TopVotersPerProposal(props) {
+  const {topRange} = props
+  const [range, setRange] = useState([90, 100])
   const [rawData, setRawData] = useState([])
   const [chartData, setChartData] = useState({options:null, data:null})
+
+  const handleChange = (event, newValue) => {
+    setRange(newValue);
+  };
   
   useEffect(()=>{
-    axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/top_voters_per_proposal")
+    axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/voting_power_cumulative")
         .then(function (response) {
           setRawData(response.data)
         })
@@ -48,7 +56,7 @@ export default function TopVotersPerProposal() {
       datasets: [{
           label: 'For',
           data:
-          rawData.filter((d)=>d.vote=='for').map((d)=>
+          rawData.filter((d)=>d.vote=='for').filter((p)=>(p.n_addresses_perc<=range[1])&&(p.n_addresses_perc>=range[0])).map((d)=>
           {
             let datapoint = {}
             datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
@@ -62,7 +70,7 @@ export default function TopVotersPerProposal() {
         {
           label: 'Against',
           data:
-          rawData.filter((d)=>d.vote=='against').map((d)=>
+          rawData.filter((d)=>d.vote=='against').filter((p)=>(p.n_addresses_perc<=range[1])&&(p.n_addresses_perc>=range[0])).map((d)=>
           {
             let datapoint = {}
             datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
@@ -114,12 +122,26 @@ export default function TopVotersPerProposal() {
           position: 'bottom',
           grid:{
             display: false
+          },
+          title: {
+            display: true,
+            text: 'Proposals'
+          },
+          ticks: {
+            // Include a dollar sign in the ticks
+            callback: function(value, index, ticks) {
+                return '#' + (parseInt(value) +1);
+            }
           }
         },
         y: {
           grid:{
             display: false
-          }
+          },
+          title: {
+            display: true,
+            text: 'Governance Power'
+          },
         }
       }
     };
@@ -129,16 +151,31 @@ export default function TopVotersPerProposal() {
     }
     setChartData(cd)
     console.log(chartData, cd)
-  },[rawData])
+  },[rawData,range])
   
 
   return (
     <div className='chart-container'>
-      <div className='chart-title'>Titolo</div>
-      <div className='chart-desc'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-           ut aliquip ex ea commodo consequat.</div>
+      <div className='chart-title'>Voters Overview</div>
+      <div className='chart-desc'>
+        Single addresses might have much more power
+        than other voters. In this chart we plot each single
+        address who has voted for the different proposals. You can 
+        select the range of voters according to their voting power.
+        Try selecting the 99 to 100 range: this will only show you how 
+        the top 1% of voters per voting power has voted.  
+      </div>
+      <div className='slider-box-container'>
+        <div className='slider-text-container'><div className='slider-text'>Percentile:</div></div>
+        <Slider className="slider-range"
+          getAriaLabel={() => 'Temperature range'}
+          value={range}
+          step={0.1}
+          onChange={handleChange}
+          valueLabelDisplay="auto"
+        />
+        <div className='slider-text-container'><div className='slider-text'>{range[0]}-{range[1]}</div></div>
+      </div>
       { (chartData.data)&&
         <Scatter options={chartData.options} data={chartData.data}/>
       }

@@ -1,7 +1,6 @@
 import React from 'react'
-import './MyTable.css'
+import './TableProposals.css'
 import { useEffect, useState } from 'react';
-import {Row,Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -74,7 +73,7 @@ export default function MyTable() {
 
   return (
     <div className='table-container'>
-    <TableContainer component={Paper} style={{background:'transparent'}}>
+    <TableContainer component={Paper} style={{height: '300px', background:'transparent'}}>
       <Table sx={{ minWidth: 400, 'th': { border: 0 }}} size="small" aria-label="a dense table">
         <TableHead style={{position: "sticky", top: "0"}}>
           <TableRow style={{backgroundColor:'#000e37'}}>
