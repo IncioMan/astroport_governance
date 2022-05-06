@@ -43,14 +43,6 @@
   color: #61dafb;
 }
 
-.proposal-selector{
-  background: transparent;
-  color: white;
-  border: none;
-  border-bottom: solid;
-  font-size: 20px;
-  margin: 0px 30px;
-}
 
 .doughnut-container{
   width: 100%;
@@ -60,31 +52,12 @@
   display: flex;
 }
 
-.proposal-selector:focus-visible{
-  outline: none;
-}
-
 .chart-title{
   font-size: 24px;
   font-family: "Source Sans Pro", sans-serif;
     font-weight: 600;
     color: rgb(255, 255, 255);
     letter-spacing: -0.005em;
-}
-
-.proposal-selector-container{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.proposal-selector-line{
-  height: 2px;
-  background: white;
-  width: 100%;
-  opacity: 0.5;
 }
 
 .title-bar{

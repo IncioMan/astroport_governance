@@ -13,7 +13,6 @@ export default function Proposal() {
   return (
       <>
         <div className='proposal-selector-container'>
-            <div className='proposal-selector-line'></div>
             <select className='proposal-selector' id="proposal_id" onChange={(e)=>setProposalId(e.target.options.selectedIndex+1)}>
               <option value={1}>Proposal #1</option>
               <option value={2}>Proposal #2</option>
@@ -24,7 +23,6 @@ export default function Proposal() {
               <option value={5}>Proposal #7</option>
               <option value={6}>Proposal #8</option>
             </select>
-            <div className='proposal-selector-line'></div>
           </div>
           <div className='charts-container'>
               <VotesOverTime proposalId={proposalId}/>
