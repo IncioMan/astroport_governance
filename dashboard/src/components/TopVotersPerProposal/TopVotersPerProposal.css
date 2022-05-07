@@ -13,7 +13,13 @@
 .slider-box-container{
     display: flex;
     justify-content: space-around;
-    width: 100%;
+    width: 90%;
+}
+
+.slider-box-container-outer{
+  width: 100%;
+  justify-content: end;
+  display: flex;
 }
 
 .slider-text{
