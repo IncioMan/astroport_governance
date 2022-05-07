@@ -42,7 +42,7 @@ export default function Proposal() {
               }
             </select>
           </div>
-          <ProposalNumberUsers/>
+          <ProposalNumberUsers proposalId={proposalId}/>
           <div className='charts-container'>
               <VotesOverTime proposalId={proposalId}/>
               <VotesAddressDistribution proposalId={proposalId}/>

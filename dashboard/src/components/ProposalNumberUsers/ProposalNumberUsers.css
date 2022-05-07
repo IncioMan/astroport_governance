@@ -1,24 +1,11 @@
-
-.MuiSlider-colorPrimary{
-  color: white !important;
-  height: 2px !important;
-  width: 83% !important;
-}
-
-.MuiSlider-thumbColorPrimary{
-  width: 10px !important;
-  height: 10px !important;
-}
-
-
-.pie-chart-container{
-  width: 40%;
+.pie-dchart-container{
+  width: 70%;
   padding-top: 24px;
 }
 
 .doughnut-container{
   width: 100%;
-  min-width: 250px;
+  min-width: 360px;
   height: 300px;
   overflow: hidden;
   justify-content: center;
@@ -26,8 +13,16 @@
   display: flex;
 }
 
+.doughnuts-container{
+  display: flex;
+  width: 100%;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  align-items: center;
+}
+
 .pie-chart-title{
-  text-align: center;
+  text-align: start;
   font-size: 24px;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
