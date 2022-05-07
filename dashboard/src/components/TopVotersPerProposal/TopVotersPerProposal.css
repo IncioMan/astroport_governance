@@ -11,8 +11,9 @@
 }
 
 .slider-box-container{
-  display: flex;
+    display: flex;
     justify-content: space-around;
+    width: 100%;
 }
 
 .slider-text{

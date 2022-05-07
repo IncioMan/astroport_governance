@@ -20,11 +20,13 @@ export default function Overview() {
         <div className='charts-container'>
             <ProposalRecap/>
         </div>
-        <div className='charts-container'>
-            <TopVotersPerProposal topRange={2}/>
-        </div>
+        <div style={{height: '24px'}}/>
         <div className='charts-container'>
             <MajorityPerVote/>
+        </div>
+        <div style={{height: '24px'}}/>
+        <div className='charts-container'>
+            <TopVotersPerProposal topRange={2}/>
         </div>
       </>
   );
