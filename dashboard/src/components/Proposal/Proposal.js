@@ -2,6 +2,7 @@ import './Proposal.css';
 import 'chart.js/auto';
 import VotesOverTime from '../VotesOverTime/VotesOverTime.js'
 import VotesAddressDistribution from '../VotesAddressDistribution/VotesAddressDistribution';
+import ProposalNumberUsers from '../ProposalNumberUsers/ProposalNumberUsers';
 import { useState, useEffect } from 'react';
 const axios = require('axios').default;
 
@@ -41,8 +42,8 @@ export default function Proposal() {
               }
             </select>
           </div>
+          <ProposalNumberUsers/>
           <div className='charts-container'>
-              
               <VotesOverTime proposalId={proposalId}/>
               <VotesAddressDistribution proposalId={proposalId}/>
           </div>
