@@ -10,14 +10,10 @@
 
 
 .charts-container{
-  width: 100%;
+  width: 70%;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-}
-.chart-container{
-  width: 46%;
-  padding: 2%;
 }
 
 
@@ -58,10 +54,11 @@
 
 .chart-title{
   font-size: 24px;
+  text-align: start;
   font-family: "Source Sans Pro", sans-serif;
-    font-weight: 600;
-    color: rgb(255, 255, 255);
-    letter-spacing: -0.005em;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  letter-spacing: -0.005em;
 }
 
 .proposal-selector-container{
@@ -93,46 +90,11 @@
   min-height: 64px;
   padding: 20px  0px ;
   font-family: "Source Sans Pro", sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    color: rgb(255, 255, 255);
-    
-    text-size-adjust: 100%;
-}
-
-.title{
-  font-size: 32px;
-  padding-left: 10px;
-  font-family: "Source Sans Pro", sans-serif;
-    font-weight: 600;
-    color: rgb(255, 255, 255);
-    letter-spacing: -0.005em;
-}
-
-.title-banner{
-  width: 100%;
-    display: flex;
-    align-items: center;
-    /* flex-wrap: wrap; */
-    padding-bottom: 24px;
-    /* padding-right: 72px; */
-    padding-left: 48px;
-}
-
-.title-container{
-    display: flex;
-    color: white;
-    /* width: 35%; */
-    text-decoration: none;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  font-weight: 400;
+  line-height: 2;
+  color: rgb(255, 255, 255);
+  
+  text-size-adjust: 100%;
 }
 
 @media(max-width:760px){

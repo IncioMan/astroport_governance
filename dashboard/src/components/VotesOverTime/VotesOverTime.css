@@ -8,16 +8,8 @@
   pointer-events: none;
 }
 
-
-.charts-container{
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
 .chart-container{
-  width: 46%;
-  padding: 2%;
+  width: 100%;
 }
 
 @media(max-width:760px){

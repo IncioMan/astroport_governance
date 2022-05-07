@@ -11,6 +11,7 @@ import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import 'chart.js/auto';
 import { useEffect, useState } from 'react';
+import './ProposalRecap.css'
 const axios = require('axios').default;
 
 
@@ -108,18 +109,22 @@ export default function ProposalRecap() {
 
   return (
     <div className='chart-container'>
-      <div className='chart-title'>Total Votes Distribution</div>
-      <div className='chart-desc'>
-        Each proposal is put up for a vote and the community
-        can cast a vote according to the amount of voting power
-        they have from their ASTRO holdings. Let's plot the results
-        from each proposal. Have most of the proposals passed? With what
-        ratio of for/against votes? Which have been the most controversial proposals?
+      <div style={{ width: "35%", minWidth: "250px"}}>
+        <div className='chart-title'>Total Votes Distribution</div>
+        <div className='chart-desc'>
+          Each proposal is put up for a vote and the community
+          can cast a vote according to the amount of voting power
+          they have from their ASTRO holdings. Let's plot the results
+          from each proposal. Have most of the proposals passed? With what
+          ratio of for/against votes? Which have been the most controversial proposals?
+        </div>
       </div>
-      <div style={{height: "24px"}}></div>
-      { (proposalChartData.data)&&
-        <Bar options={proposalChartData.options} data={proposalChartData.data}/>
-      }
+      <div style={{ width: "2%"}}></div>
+      <div style={{ width: "63%", minWidth: "250px"}}>
+        { (proposalChartData.data)&&
+          <Bar options={proposalChartData.options} data={proposalChartData.data}/>
+        }
+      </div>
     </div>
   );
 }

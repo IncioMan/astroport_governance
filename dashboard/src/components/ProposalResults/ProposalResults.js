@@ -85,7 +85,7 @@ export default function TopVotersPerProposal2(props) {
         }
       },
       responsive: true,
-      radius: 130,
+      radius: 110,
     };
     const cd = {
       options: options,
@@ -97,8 +97,8 @@ export default function TopVotersPerProposal2(props) {
   
 
   return (
-    <div className='chart-container'>
-      <div className='chart-title'>Votes Overview</div>
+    <div className='pie-chart-container'>
+      <div className='pie-chart-title'>Votes Overview</div>
       <div className='chart-desc'>
         Not all proposals get voted through. Let's plot 
         how many proposals have passed/failed out of all the ones
