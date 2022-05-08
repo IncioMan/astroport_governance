@@ -92,7 +92,6 @@ export default function TopVotersPerProposal2(props) {
       data: data
     }
     setChartData(cd)
-    console.log(chartData, cd)
   },[rawData])
   
 

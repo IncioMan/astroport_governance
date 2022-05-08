@@ -35,7 +35,6 @@ export default function VotesAddressDistribution(props) {
     axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/majority_per_vote")
         .then(function (response) {
           setRawData(response.data)
-          console.log("habemus data3", response.data)
         })
         .catch(function (error) {
             console.log(error);
@@ -116,10 +115,8 @@ export default function VotesAddressDistribution(props) {
       data: data
     }
     setChartData(cd)
-    console.log(chartData, cd)
   },[rawData])
 
-    console.log(chartData.options, chartData.data)
     return (
       <div className='chart-container'>
         <div style={{ width: "35%", minWidth: "250px"}}>
