@@ -17,6 +17,7 @@ ChartJS.defaults.backgroundColor = "#fff";
 
 export default function ProposalNumberUsers(props) {
   const {proposalId} = props
+  const [proposalTitle, setProposalTitle] = useState([])
   const [rawNVoterData, setRawNVoterData] = useState([])
   const [rawVotPowrData, setRawVotPowrData] = useState([])
   const [chartNVoterData, setChartNVoterData] = useState({options:null, data:null})
@@ -73,9 +74,7 @@ export default function ProposalNumberUsers(props) {
           position: 'right'
         },
         title: {
-          display: true,
-          text: 'ciao',
-          color: '#ffffff'
+          display: false
         },
         tooltip: {
           enabled: true,
@@ -131,14 +130,12 @@ export default function ProposalNumberUsers(props) {
 
     const options = {
       plugins: {
+        title: {
+          display: false,
+        },
         legend:{
           display: true,
           position: 'right'
-        },
-        title: {
-          display: true,
-          text: 'BLLLALALALALA',
-          color: '#ffffff'
         },
         tooltip: {
           enabled: true,
@@ -180,11 +177,13 @@ export default function ProposalNumberUsers(props) {
       <div className='doughnuts-container'>
         { (chartNVoterData.data)&&
           <div className='doughnut-container'>
+          <div className='d-title'>Number of Voters</div>
           <Doughnut  options={chartNVoterData.options} data={chartNVoterData.data}/>
           </div>
         }
         { (chartVotPowrData.data)&&
           <div className='doughnut-container'>
+          <div className='d-title'>Voting Power</div>
           <Doughnut  options={chartVotPowrData.options} data={chartVotPowrData.data}/>
           </div>
         }
