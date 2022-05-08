@@ -86,7 +86,6 @@ export default function VotesOverTime(props) {
       ],
     }
 
-    console.log('ciao',[...new Set(rawData.map((i, p)=> p))])
     const options = {
       responsive: true,
       plugins: {
@@ -133,7 +132,6 @@ export default function VotesOverTime(props) {
       data: data
     }
     setChartData(cd)
-    console.log(chartData, cd)
   },[rawData,proposalId])
 
   const options = {
@@ -148,7 +146,6 @@ export default function VotesOverTime(props) {
       },
     },
   }
-    console.log(chartData.options, chartData.data)
     return (
       <div className='chart-container'>
       <div style={{ width: "35%", minWidth: "250px"}}>

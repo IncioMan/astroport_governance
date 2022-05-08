@@ -60,8 +60,10 @@ export default function Proposal(props) {
   },[xAstroHolders, astroHolders])
 
   useEffect(()=>{
-    setProposalData(rawData.filter((p)=>p.proposal_id===proposalId))
-    console.log(proposalData);
+    setProposalData(rawData.filter((p)=>parseInt(p.proposal_id)==parseInt(proposalId)))
+  },[rawData])
+
+  useEffect(()=>{
     //Calculate metrics
     if(proposalData){
       setNAddr(
@@ -70,8 +72,7 @@ export default function Proposal(props) {
         (proposalData.filter((p)=>p.vote==='abstain')[0]?.voter ? proposalData.filter((p)=>p.vote==='abstain')[0]?.voter : 0)
       )
     }
-  },[rawData])
-
+  },[proposalData])
   
   
   return (

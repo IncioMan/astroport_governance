@@ -34,7 +34,6 @@ export default function TopVotersPerProposal(props) {
   const [proposalsId, setProposalsId] = useState(iProposalsId?iProposalsId:[])
   const [chartData, setChartData] = useState({options:null, data:null})
   const random = (randomFactor|randomFactor==0) ? randomFactor : 0.2
-  console.log(random, randomFactor)
  
   const handleChange = (event, newValue) => {
     setRange(newValue);
@@ -45,7 +44,6 @@ export default function TopVotersPerProposal(props) {
         .then(function (response) {
           if(proposalsId.length===1){
           setRawData(response.data.filter((p)=>proposalsId.includes(p.proposal_id)))
-          console.log('HERE', proposalsId)
           }else{
             setRawData(response.data)
           }
