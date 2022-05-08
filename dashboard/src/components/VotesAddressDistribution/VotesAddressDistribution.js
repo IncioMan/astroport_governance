@@ -112,17 +112,22 @@ export default function VotesAddressDistribution(props) {
 
     return (
       <div className='chart-container'>
-      <div className='chart-title'>Cumulative Voting Power</div>
-      <div className='chart-desc'>
+      <div style={{ width: "35%", minWidth: "250px"}}>
+        <div className='chart-title'>Cumulative Voting Power</div>
+        <div className='chart-desc'>
         A detailed distribution of the amount of governance power of the 
         single voters in this proposal is depicted in the following chart.
         We can inspect the chart to ask the question: how many addresses were
         needed to reach the X% of voting power? What percentage did the top X addresses
         have?
+        </div>
       </div>
-        { (chartData.data)&&
+      <div style={{ width: "2%"}}></div>
+      <div style={{ width: "63%", minWidth: "250px"}}>
+      { (chartData.data)&&
           <Line options={chartData.options} data={chartData.data} />
         }
+      </div>
       </div>
     );
 }

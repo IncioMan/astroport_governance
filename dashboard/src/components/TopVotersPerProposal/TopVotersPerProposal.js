@@ -28,11 +28,14 @@ ChartJS.defaults.color = "#fff";
 ChartJS.defaults.backgroundColor = "#fff";
 
 export default function TopVotersPerProposal(props) {
-  const {topRange, proposalId} = props
-  const [range, setRange] = useState([90, 100])
+  const {iProposalsId, randomFactor} = props
+  const [range, setRange] = useState([99, 100])
   const [rawData, setRawData] = useState([])
+  const [proposalsId, setProposalsId] = useState(iProposalsId?iProposalsId:[])
   const [chartData, setChartData] = useState({options:null, data:null})
-
+  const random = (randomFactor|randomFactor==0) ? randomFactor : 0.2
+  console.log(random, randomFactor)
+ 
   const handleChange = (event, newValue) => {
     setRange(newValue);
   };
@@ -40,8 +43,9 @@ export default function TopVotersPerProposal(props) {
   useEffect(()=>{
     axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/voting_power_cumulative")
         .then(function (response) {
-          if(proposalId){
-          setRawData(response.data.filter((p)=>proposalId.includes(p.proposal_id)))
+          if(proposalsId.length===1){
+          setRawData(response.data.filter((p)=>proposalsId.includes(p.proposal_id)))
+          console.log('HERE', proposalsId)
           }else{
             setRawData(response.data)
           }
@@ -49,7 +53,7 @@ export default function TopVotersPerProposal(props) {
         .catch(function (error) {
             console.log(error);
         })
-  },[proposalId])
+  },[proposalsId])
 
   useEffect(()=>{
     if(rawData.length == 0){
@@ -63,7 +67,7 @@ export default function TopVotersPerProposal(props) {
           rawData.filter((d)=>d.vote=='for').filter((p)=>(p.n_addresses_perc<=range[1])&&(p.n_addresses_perc>=range[0])).map((d)=>
           {
             let datapoint = {}
-            datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
+            datapoint.x = ((random/2) - (random/2)*Math.random()) + d.proposal_id
             datapoint.y = (Math.random())*1000 + Math.round(d.voting_power/1000000/100)*100
             datapoint.voter = d.voter
             datapoint.proposal_id = d.proposal_id
@@ -77,7 +81,7 @@ export default function TopVotersPerProposal(props) {
           rawData.filter((d)=>d.vote=='against').filter((p)=>(p.n_addresses_perc<=range[1])&&(p.n_addresses_perc>=range[0])).map((d)=>
           {
             let datapoint = {}
-            datapoint.x = (0.1 - 0.2*Math.random()) + d.proposal_id
+            datapoint.x = ((random/2) - (random/2)*Math.random()) + d.proposal_id
             datapoint.y = (Math.random())*1000 + Math.round(d.voting_power/1000000/100)*100
             datapoint.voter = d.voter
             datapoint.proposal_id = d.proposal_id
@@ -128,13 +132,13 @@ export default function TopVotersPerProposal(props) {
             display: false
           },
           title: {
-            display: true,
+            display: proposalsId.length!==1,
             text: 'Proposals'
           },
           ticks: {
             // Include a dollar sign in the ticks
             callback: function(value, index, ticks) {
-                return '#' + (parseInt(value));
+                return proposalsId.length===1 ? null : '#' + (parseInt(value));
             }
           }
         },
@@ -159,15 +163,6 @@ export default function TopVotersPerProposal(props) {
 
   return (
     <div className='chart-container'>
-      <div className='chart-title'>Voters Overview</div>
-      <div className='chart-desc'>
-        Single addresses might have much more power
-        than other voters. In this chart we plot each single
-        address who has voted for the different proposals. You can 
-        select the range of voters according to their voting power.
-        Try selecting the 99 to 100 range: this will only show you how 
-        the top 1% of voters per voting power has voted.  
-      </div>
       <div className='slider-box-container-outer'>
         <div className='slider-box-container'>
           <div className='slider-text-container'><div className='slider-text'>Percentile:</div></div>
