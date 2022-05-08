@@ -97,6 +97,16 @@
   text-size-adjust: 100%;
 }
 
+.proposal-title{
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  padding-top: 24px;
+}
+
+.proposal-title a{
+  color: #ada3ff
+}
+
 @media(max-width:760px){
   .chart-container{
     width: 100%;

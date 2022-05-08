@@ -102,8 +102,7 @@ export default function MyTable() {
                 sx={{ maxWidth: 200}}
                 align="center"> 
                 <a style={{color:'#ada3ff'}} 
-                  href={'https://app.astroport.fi/governance/proposal/'+row.proposal_id}
-                  target={"_blank"}>
+                  href={'http://localhost:3000/proposal?id='+row.proposal_id}>
                   {row.submit_proposal.title}
                 </a></TableCell>
               <TableCell 

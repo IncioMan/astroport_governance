@@ -108,10 +108,8 @@ export default function VotesAddressDistribution(props) {
       data: data
     }
     setChartData(cd)
-    console.log(chartData, cd)
   },[rawData, proposalId])
 
-    console.log(chartData.options, chartData.data)
     return (
       <div className='chart-container'>
       <div className='chart-title'>Cumulative Voting Power</div>

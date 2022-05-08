@@ -4,6 +4,8 @@ import VotesOverTime from '../VotesOverTime/VotesOverTime.js'
 import VotesAddressDistribution from '../VotesAddressDistribution/VotesAddressDistribution';
 import ProposalNumberUsers from '../ProposalNumberUsers/ProposalNumberUsers';
 import { useState, useEffect } from 'react';
+import TopVotersPerProposal from '../TopVotersPerProposal/TopVotersPerProposal';
+import { useLocation } from 'react-router-dom';
 const axios = require('axios').default;
 
 /**
@@ -19,8 +21,11 @@ voting_power_for: 47045087767230
 
 export default function Proposal() {
   const [proposalTitle  ,setProposalTitle] = useState()
-  const [proposalId, setProposalId] = useState(1)
   const [proposalData, setProposalData] = useState([])
+  const { search } = useLocation();
+  const match = search.match(/id=(.*)/);
+  const initProposalId = match?.[1];
+  const [proposalId, setProposalId] = useState(initProposalId ? parseInt(initProposalId):1)
 
   useEffect(()=>{
     axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/proposal_recap")
@@ -47,23 +52,25 @@ export default function Proposal() {
     })
   },[proposalId])
   
+  
   return (
       <>
         <div className='proposal-selector-container'>
-            <select className='proposal-selector' id="proposal_id" onChange={(e)=>setProposalId(e.target.options.selectedIndex+1)}>
-              {
-                proposalData.map((p)=>{
-                  return <option value={p.proposal_id}>Proposal #{p.proposal_id}</option>
-                })
-              }
-            </select>
+            <div style={{padding: "30px 0px"}}>
+              
+            </div>
+          <div className='proposal-title'>
           </div>
-          {proposalTitle}
+          <a style={{color:'#ada3ff'}} 
+                  href={'https://app.astroport.fi/governance/proposal/'+proposalId}
+                  target={"_blank"}>
+          {proposalTitle}</a></div>
           <ProposalNumberUsers proposalId={proposalId}/>
           <div className='charts-container'>
               <VotesOverTime proposalId={proposalId}/>
               <VotesAddressDistribution proposalId={proposalId}/>
           </div>
+          <TopVotersPerProposal proposalId={[proposalId]}></TopVotersPerProposal>
       </>
   );
 }

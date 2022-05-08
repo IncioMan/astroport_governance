@@ -167,11 +167,12 @@ export default function ProposalNumberUsers(props) {
   return (
     <div className='pie-dchart-container'>
       <div className='chart-title-container'>
-        <div className='pie-chart-title'>Number of Voters</div>
+        <div className='pie-chart-title'>Vote Overview</div>
         <div className='chart-desc'>
-          Not all proposals get voted through. Let's plot 
-          how many proposals have passed/failed out of all the ones
-          put up for vote. Have the majority of proposals passed?  
+          The distribution of voting power and single number of voters who voted for or against.
+          The two metrics can differ and tell different sides of the same story. For example, when 
+          the majority of single voters are in favor, but most of the voting power has voted against -
+          hence making the proposal fail - it means that some single users has voted with a large share of voting power.
         </div>
       </div>
       <div className='doughnuts-container'>

@@ -28,7 +28,7 @@ ChartJS.defaults.color = "#fff";
 ChartJS.defaults.backgroundColor = "#fff";
 
 export default function TopVotersPerProposal(props) {
-  const {topRange} = props
+  const {topRange, proposalId} = props
   const [range, setRange] = useState([90, 100])
   const [rawData, setRawData] = useState([])
   const [chartData, setChartData] = useState({options:null, data:null})
@@ -40,12 +40,16 @@ export default function TopVotersPerProposal(props) {
   useEffect(()=>{
     axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/voting_power_cumulative")
         .then(function (response) {
-          setRawData(response.data)
+          if(proposalId){
+          setRawData(response.data.filter((p)=>proposalId.includes(p.proposal_id)))
+          }else{
+            setRawData(response.data)
+          }
         })
         .catch(function (error) {
             console.log(error);
         })
-  },[])
+  },[proposalId])
 
   useEffect(()=>{
     if(rawData.length == 0){
@@ -150,7 +154,6 @@ export default function TopVotersPerProposal(props) {
       data: data
     }
     setChartData(cd)
-    console.log(chartData, cd)
   },[rawData,range])
   
 
