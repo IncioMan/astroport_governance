@@ -1,11 +1,1 @@
-[{"proposal_id":1,"vote":"against","voter":12},
-    {"proposal_id":1,"vote":"for","voter":2062},
-    {"proposal_id":2,"vote":"against","voter":46},
-    {"proposal_id":2,"vote":"for","voter":1200},
-    {"proposal_id":3,"vote":"against","voter":149},
-    {"proposal_id":3,"vote":"for","voter":1035},
-    {"proposal_id":4,"vote":"against","voter":339},
-    {"proposal_id":4,"vote":"for","voter":326},
-    {"proposal_id":5,"vote":"against","voter":330},
-    {"proposal_id":5,"vote":"for","voter":401},
-    {"proposal_id":6,"vote":"against","voter":70},{"proposal_id":6,"vote":"for","voter":923},{"proposal_id":7,"vote":"against","voter":40},{"proposal_id":7,"vote":"for","voter":1063},{"proposal_id":8,"vote":"against","voter":10},{"proposal_id":8,"vote":"for","voter":631}]
+[{"proposal_id":1,"vote":"against","voter":12},{"proposal_id":1,"vote":"for","voter":2062},{"proposal_id":2,"vote":"against","voter":46},{"proposal_id":2,"vote":"for","voter":1200},{"proposal_id":3,"vote":"against","voter":149},{"proposal_id":3,"vote":"for","voter":1035},{"proposal_id":4,"vote":"against","voter":339},{"proposal_id":4,"vote":"for","voter":326},{"proposal_id":5,"vote":"against","voter":330},{"proposal_id":5,"vote":"for","voter":401},{"proposal_id":6,"vote":"against","voter":70},{"proposal_id":6,"vote":"for","voter":923},{"proposal_id":7,"vote":"against","voter":40},{"proposal_id":7,"vote":"for","voter":1063},{"proposal_id":8,"vote":"against","voter":12},{"proposal_id":8,"vote":"for","voter":848}]

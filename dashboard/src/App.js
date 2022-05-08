@@ -5,6 +5,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { useState } from 'react';
 import Overview from './components/Overview/Overview';
 import Proposal from './components/Proposal/Proposal';
+import Voter from './components/Voter/Voter';
 const axios = require('axios').default;
 
 
@@ -35,6 +36,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Overview />} />
               <Route path="/proposal" element={<Proposal />} />
+              <Route path="/voter" element={<Voter />} />
             </Routes>
           </BrowserRouter>
         </div>
