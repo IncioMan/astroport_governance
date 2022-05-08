@@ -3,6 +3,7 @@ import 'chart.js/auto';
 import VotesOverTime from '../VotesOverTime/VotesOverTime.js'
 import VotesAddressDistribution from '../VotesAddressDistribution/VotesAddressDistribution';
 import ProposalNumberUsers from '../ProposalNumberUsers/ProposalNumberUsers';
+import ProposalMetrics from '../ProposalMetrics/ProposalMetrics';
 import { useState, useEffect } from 'react';
 import TopVotersPerProposal from '../TopVotersPerProposal/TopVotersPerProposal';
 import { useLocation } from 'react-router-dom';
@@ -17,7 +18,7 @@ proposal_id: 1
 result: "passed"
 voting_power_against: 10611808811
 voting_power_for: 47045087767230
- */
+*/
 
 export default function Proposal() {
   const [proposalTitle  ,setProposalTitle] = useState()
@@ -56,15 +57,13 @@ export default function Proposal() {
   return (
       <>
         <div className='proposal-selector-container'>
-            <div style={{padding: "30px 0px"}}>
-              
-            </div>
           <div className='proposal-title'>
           </div>
           <a style={{color:'#ada3ff'}} 
                   href={'https://app.astroport.fi/governance/proposal/'+proposalId}
                   target={"_blank"}>
           {proposalTitle}</a></div>
+          <ProposalMetrics proposalId={proposalId}/>
           <ProposalNumberUsers proposalId={proposalId}/>
           <div className='charts-container'>
               <VotesOverTime proposalId={proposalId}/>
