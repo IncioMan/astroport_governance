@@ -26,7 +26,7 @@ export default function Proposal() {
   const { search } = useLocation();
   const match = search.match(/id=(.*)/);
   const initProposalId = match?.[1];
-  const [proposalId, setProposalId] = useState(initProposalId ? parseInt(initProposalId):1)
+  const [proposalId, setProposalId] = useState(parseInt(initProposalId))
 
   useEffect(()=>{
     axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/proposal_recap")
@@ -53,10 +53,26 @@ export default function Proposal() {
     })
   },[proposalId])
   
+  const handleProposalSelection = (proposal_id) =>{
+    window.location.href = "proposal?id="+proposal_id;
+  }
   
-  return (
-      <>
-        <div className='proposal-selector-container'>
+  return <>
+        {
+          !proposalId && 
+          <div className='proposal-selector-container'>
+            <select className='proposal-selector' id="proposal_id" 
+                    onChange={(e)=>handleProposalSelection(e.target.options.selectedIndex+1)}>
+              {proposalData.map((p)=>{
+                return <option value={p.proposal_id}>Proposal #{p.proposal_id}</option>
+              })}
+            </select>
+          </div>
+        }
+        {
+          proposalId &&
+          <>
+          <div className='proposal-selector-container'>
           <div className='proposal-title'>
           </div>
           <a style={{color:'#ada3ff'}} 
@@ -85,6 +101,7 @@ export default function Proposal() {
                 </div> 
               </div>
           </div>
-      </>
-  );
-}
+          </>
+        }
+        </>
+  }

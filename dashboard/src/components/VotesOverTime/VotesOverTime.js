@@ -149,7 +149,7 @@ export default function VotesOverTime(props) {
     return (
       <div className='chart-container'>
       <div style={{ width: "35%", minWidth: "250px"}}>
-        <div className='chart-title'>Votes Distribution Over Tim</div>
+        <div className='chart-title'>Votes Distribution Over Time</div>
         <div className='chart-desc'>
         In this chart we can observe the amount of votes
         for each option (for/against) over time. This can highlight

@@ -32,7 +32,7 @@ export default function Voter() {
   }
 
   const handleOptionClick = (v)=>{
-    console.log(v)
+    window.location.href = "voter?voter="+v;
   }
 
 
@@ -46,7 +46,8 @@ return (
               id="fname" 
               onChange={handleTextInput}
               name="ciao"
-              autoFocus={true}/>
+              autoFocus={true}
+              placeholder={"Search voter's address"}/>
       </div>
       <div className='options-container'>
         {votersToDisplay.map((v)=>{
