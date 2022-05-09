@@ -42,16 +42,8 @@ export default function TopVotersPerProposal2(props) {
         {
           label: '# of Votes',
           data: rawData.map((p)=>p.proposal_id),
-          backgroundColor: [
-            '#ef5176',
-            '#ffffff',
-            '#7fe6a2'
-          ],
-          borderColor: [
-            '#ef5176',
-            '#ffffff',
-            '#7fe6a2'
-          ],
+          backgroundColor: [...new Set(rawData.map((p)=>p.result))].includes['abstain']?['#ef5176','#ffffff','#7fe6a2']:['#ef5176','#7fe6a2'],
+          borderColor: [...new Set(rawData.map((p)=>p.result))].includes['abstain']?['#ef5176','#ffffff','#7fe6a2']:['#ef5176','#7fe6a2'],
           borderWidth: 1,
         },
       ],
