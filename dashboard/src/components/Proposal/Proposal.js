@@ -26,7 +26,7 @@ export default function Proposal() {
   const { search } = useLocation();
   const match = search.match(/id=(.*)/);
   const initProposalId = match?.[1];
-  const [proposalId, setProposalId] = useState(parseInt(initProposalId))
+  const [proposalId, setProposalId] = useState(initProposalId ? parseInt(initProposalId) : -1)
 
   useEffect(()=>{
     axios.get("https://raw.githubusercontent.com/IncioMan/astroport_governance/master/data/proposal_recap")
@@ -59,49 +59,50 @@ export default function Proposal() {
   
   return <>
         {
-          !proposalId && 
+          (proposalId <0) && 
           <div className='proposal-selector-container'>
             <select className='proposal-selector' id="proposal_id" 
                     onChange={(e)=>handleProposalSelection(e.target.options.selectedIndex+1)}>
-              {proposalData.map((p)=>{
+              {proposalData.filter((p)=>p.proposal_id).map((p)=>{
                 return <option value={p.proposal_id}>Proposal #{p.proposal_id}</option>
               })}
             </select>
           </div>
         }
+        <>
         {
-          proposalId &&
+          ((proposalId>=0) &&
           <>
-          <div className='proposal-selector-container'>
-          <div className='proposal-title'>
-          </div>
-          <a style={{color:'#ada3ff'}} 
-                  href={'https://app.astroport.fi/governance/proposal/'+proposalId}
-                  target={"_blank"}>
-          {proposalTitle}</a></div>
-          <ProposalMetrics proposalId={proposalId}/>
-          <ProposalNumberUsers proposalId={proposalId}/>
-          <div className='charts-container'>
-              <VotesOverTime proposalId={proposalId}/>
-              <VotesAddressDistribution proposalId={proposalId}/>
-              <div className='chart-container'>
-                <div style={{ width: "35%", minWidth: "250px"}}>
-                  <div className='chart-title'>Single Voters Distribution</div>
-                  <div className='chart-desc'>
-                  A detailed distribution of the amount of governance power of the 
-                  single voters in this proposal is depicted in the following chart.
-                  We can inspect the chart to ask the question: how many addresses were
-                  needed to reach the X% of voting power? What percentage did the top X addresses
-                  have?
+            <div className='proposal-selector-container'>
+              <a style={{color:'#ada3ff'}} 
+                      href={'https://app.astroport.fi/governance/proposal/'+proposalId}
+                      target={"_blank"}>
+              {proposalTitle}</a>
+            </div>
+            <ProposalMetrics proposalId={proposalId}/>
+            <ProposalNumberUsers proposalId={proposalId}/>
+            <div className='charts-container'>
+                <VotesOverTime proposalId={proposalId}/>
+                <VotesAddressDistribution proposalId={proposalId}/>
+                <div className='chart-container'>
+                  <div style={{ width: "35%", minWidth: "250px"}}>
+                    <div className='chart-title'>Single Voters Distribution</div>
+                    <div className='chart-desc'>
+                    A detailed distribution of the amount of governance power of the 
+                    single voters in this proposal is depicted in the following chart.
+                    We can inspect the chart to ask the question: how many addresses were
+                    needed to reach the X% of voting power? What percentage did the top X addresses
+                    have?
+                    </div>
                   </div>
+                  <div style={{ width: "2%"}}></div>
+                  <div style={{ width: "63%", minWidth: "250px"}}>
+                    <TopVotersPerProposal iProposalsId={[proposalId]} randomFactor={0.00001}></TopVotersPerProposal>
+                  </div> 
                 </div>
-                <div style={{ width: "2%"}}></div>
-                <div style={{ width: "63%", minWidth: "250px"}}>
-                  <TopVotersPerProposal iProposalsId={[proposalId]} randomFactor={0.00001}></TopVotersPerProposal>
-                </div> 
-              </div>
-          </div>
+            </div>
           </>
-        }
+          )}
+          </>
         </>
   }
