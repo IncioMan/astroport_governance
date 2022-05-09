@@ -39,6 +39,7 @@ export default function Proposal(props) {
               +"apiKey=vAp6ysmAXH470YcphYxv&contract_address=terra14lpnyzc9z4g3ugr4lhm8s4nle0tq8vcltkhzh7")
         .then(function (response) {
           setXAstroHolders(Object.keys(response.data.result.holders))
+          console.log(Object.keys(response.data.result.holders))
         })
         .catch(function (error) {
             console.log(error);

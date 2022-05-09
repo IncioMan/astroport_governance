@@ -102,7 +102,7 @@ export default function MyTable() {
                 sx={{ maxWidth: 200}}
                 align="center"> 
                 <a style={{color:'#ada3ff'}} 
-                  href={'http://localhost:3000/proposal?id='+row.proposal_id}>
+                  href={'./proposal?id='+row.proposal_id}>
                   {row.submit_proposal.title}
                 </a></TableCell>
               <TableCell 
