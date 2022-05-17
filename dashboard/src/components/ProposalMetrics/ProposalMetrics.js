@@ -32,34 +32,6 @@ export default function Proposal(props) {
         })
   },[proposalId])
 
-
-  useEffect(()=>{
-      //xASTRO
-    axios.get("https://terra-api.daic.capital/api/tx/GetRichlistByTokenContract?"
-              +"apiKey=vAp6ysmAXH470YcphYxv&contract_address=terra14lpnyzc9z4g3ugr4lhm8s4nle0tq8vcltkhzh7")
-        .then(function (response) {
-          setXAstroHolders(Object.keys(response.data.result.holders))
-          console.log(Object.keys(response.data.result.holders))
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
-        //ASTRO
-    axios.get("https://terra-api.daic.capital/api/tx/GetRichlistByTokenContract?"
-        +"apiKey=vAp6ysmAXH470YcphYxv&contract_address=terra1xj49zyqrwpv5k928jwfpfy2ha668nwdgkwlrg3")
-      .then(function (response) {
-        setAstroHolders(Object.keys(response.data.result.holders))
-        console.log(astroHolders.length)
-      })
-      .catch(function (error) {
-          console.log(error);
-      })
-  },[])
-
-  useEffect(()=>{
-    setAllHolders(new Set(xAstroHolders, astroHolders))
-  },[xAstroHolders, astroHolders])
-
   useEffect(()=>{
     setProposalData(rawData.filter((p)=>parseInt(p.proposal_id)==parseInt(proposalId)))
   },[rawData])
